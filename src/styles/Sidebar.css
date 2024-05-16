@@ -1,0 +1,21 @@
+.sidebar {
+    background-color: aliceblue;
+    gap: 20px;
+    position: absolute;
+    /* margin: 40px 0 0 70px; */
+    display: grid;
+    text-align: justify;
+    padding: 65px;
+    }
+.sidebar div{
+    padding: 10px;
+}
+.sidebar div:hover{
+    background-color: #4949e347;
+    border-radius: 8px;
+    cursor: pointer;
+}
+.logout{
+    background-color: #dce2e8;
+    border-radius: 10px;
+}

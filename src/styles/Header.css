@@ -1,0 +1,21 @@
+.header{
+    background-color:#dce2e8;
+    height: 50px;
+    padding-top: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+.header>:nth-child(1){
+    margin-left: 8rem;
+    font-size: 28px;
+    font-weight: bolder;
+}
+.header>:nth-child(2){
+    margin-right: 50px;
+    cursor: pointer;
+}
+.call>:nth-child(1){
+    background-color: #a7a1a1bd;
+    padding: 12px;
+    border-radius: 18px;
+}
