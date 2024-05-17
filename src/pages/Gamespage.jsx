@@ -1,5 +1,5 @@
 import React from 'react'
-import Common from '../../layout/Common'
+import Common from '../layout/Common'
 
 const Gamespage = () => {
   return (

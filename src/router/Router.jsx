@@ -1,20 +1,21 @@
 import React from 'react'
 import { BrowserRouter, Routes, Route } from "react-router-dom"; 
-import Login from '../components/Login';
-import Forgot from '../components/Forgot';
-import Home from '../components/Home';
-import Gamespage from '../components/sidebarpages/Gamespage';
-import Dashboardpage from '../components/sidebarpages/Dashboardpage';
-import Refreepage from '../components/sidebarpages/Refreepage';
-import Eventpage from '../components/sidebarpages/Eventpage';
-import Livepage from '../components/sidebarpages/Livepage';
-import Notificationpage from '../components/sidebarpages/Notificationpage';
-import Playerpage from '../components/sidebarpages/Playerpage';
-import Teamspage from '../components/sidebarpages/Teamspage';
-import Updatepage from '../components/sidebarpages/Updatepage';
-import Userpage from '../components/sidebarpages/Userpage';
-import Viewpage from '../components/sidebarpages/Viewpage';
-import PrivateRoute from './PrivateRoute';
+import Login from '../pages/login/Login.jsx';
+import Forgot from '../pages/forgot/Forgot.jsx';
+import Home from '../pages/home/Home.jsx';
+import Gamespage from '../pages/Gamespage';
+import Dashboardpage from '../pages/Dashboardpage';
+import Refreepage from '../pages/Refreepage';
+import Eventpage from '../pages/Eventpage';
+import Livepage from '../pages/Livepage';
+import Notificationpage from '../pages/Notificationpage';
+import Playerpage from '../pages/Playerpage';
+import Teamspage from '../pages/Teamspage';
+import Updatepage from '../pages/Updatepage';
+import Userpage from '../pages/Userpage';
+import Viewpage from '../pages/Viewpage';
+
+// import PrivateRoute from './PrivateRoute';
 const Router = () => {
   return (
     <div>

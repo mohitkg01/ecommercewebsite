@@ -4,7 +4,7 @@ import Common from '../layout/Common'
 const PrivateRoute = () => {
   return (
     <div id="">
-     <Common/>
+     {/* <Common/> */}
     </div>
   )
 }

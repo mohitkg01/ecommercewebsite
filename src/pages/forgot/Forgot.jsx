@@ -1,5 +1,5 @@
 import React from 'react'
-import img from '../assets/img.jpg';
+import img from '../../assets/img.jpg';
 import { useState } from 'react';
 const Forgot = () => {
   const [emailIn,setEmail]=useState("");
