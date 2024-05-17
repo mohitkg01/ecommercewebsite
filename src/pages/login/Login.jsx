@@ -4,6 +4,7 @@ import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import img from '../../assets/img.jpg';
 import {useNavigate} from "react-router-dom";
 // import axios from 'axios';
+import toast, { Toaster } from 'react-hot-toast';
 
 const Login = () => {
     const [emailIn,setEmail]=useState("");
@@ -11,6 +12,7 @@ const Login = () => {
     const [showPassword,setShowPassword]=useState(false);
     const [type,setType]=useState('password');
     const navigate = useNavigate();
+   
   
 //getting data 
 // const em=localStorage.getItem("email");
@@ -39,6 +41,11 @@ const Login = () => {
 //         
 //     }
 // }
+//invalid handler
+const invalid=()=>toast('Invalid Credientials');
+//login success
+// const success=()=>toast("Login succesful");
+
 const loginHandler=async ()=>{
     const res= await fetch('https://dummyjson.com/auth/login', {
         method: 'POST',
@@ -55,9 +62,11 @@ const loginHandler=async ()=>{
       if(res.username===emailIn){
        localStorage.setItem("token",JSON.stringify(res.token));
         navigate("/home");
+      // success();
       }
       else{
-        alert("Invalid id and password");
+        // alert("Invalid id and password");
+        invalid();
       }
 }
 
@@ -116,10 +125,11 @@ const handleForgot=()=>{
     <div className='btn'>
     <span className="fg"onClick={handleForgot} title='click to reset your password'>Forgot password?</span>
     <button onClick={loginHandler}>Log In</button>
+    <Toaster />
     </div>
     </div>
     </div>
     </div>
   )
 }
-export default Login
+export default Login;
