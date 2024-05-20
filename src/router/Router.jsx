@@ -1,6 +1,5 @@
 import React from 'react'
 import { BrowserRouter, Routes, Route } from "react-router-dom"; 
-import Login from '../pages/login/Login.jsx';
 import Forgot from '../pages/forgot/Forgot.jsx';
 import Home from '../pages/home/Home.jsx';
 import Gamespage from '../pages/Gamespage';
@@ -14,19 +13,23 @@ import Teamspage from '../pages/Teamspage';
 import Updatepage from '../pages/Updatepage';
 import Userpage from '../pages/Userpage';
 import Viewpage from '../pages/Viewpage';
+import Login from '../pages/login/Login.jsx';
+import PublicRoute from './PublicRoute.jsx';
+import PrivateRoute from './PrivateRoute';
 
-// import PrivateRoute from './PrivateRoute';
 const Router = () => {
   return (
     <div>
         <BrowserRouter>
       <Routes>
+        {/* Public route */}
+        <Route path='/' element={<PublicRoute/>}>
           <Route path='/' element={<Login/>} />
           <Route path='/forgot' element={<Forgot/>}/>
-
-        {/* <Route path="" element={<PrivateRoute/>}>  */}
+          </Route>
+          {/* privarte route  */}
+        <Route path='' element={<PrivateRoute/>}> 
           <Route path='/home' element={<Home/>}/>
-        {/* side bar route page */}
           <Route path='/game' element={<Gamespage/>}/>
           <Route path='/dash' element={<Dashboardpage/>}/>
           <Route path='/event' element={<Eventpage/>}/>
@@ -38,7 +41,7 @@ const Router = () => {
           <Route path='/update' element={<Updatepage/>}/>
           <Route path='/users' element={<Userpage/>}/>
           <Route path='/view' element={<Viewpage/>}/>
-        {/* </Route> */}
+        </Route>
       </Routes>
       </BrowserRouter>
     </div>

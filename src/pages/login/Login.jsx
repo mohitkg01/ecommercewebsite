@@ -42,7 +42,7 @@ const Login = () => {
 //     }
 // }
 //invalid handler
-const invalid=()=>toast('Invalid Credientials');
+  const invalid = () => toast('Invalid Credientials');
 //login success
 // const success=()=>toast("Login succesful");
 
@@ -125,7 +125,7 @@ const handleForgot=()=>{
     <div className='btn'>
     <span className="fg"onClick={handleForgot} title='click to reset your password'>Forgot password?</span>
     <button onClick={loginHandler}>Log In</button>
-    <Toaster />
+    <Toaster />  
     </div>
     </div>
     </div>
