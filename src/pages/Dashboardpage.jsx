@@ -1,10 +1,10 @@
 import React from 'react'
-import Common from '../layout/Common'
+// import { useMatch } from 'react-router-dom'
 
 const Dashboardpage = () => {
+  // const match=useMatch('/dash');
   return (
     <div id='dash'>
-      <Common/>
       Dashboardpage</div>
   )
 }

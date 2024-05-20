@@ -26,7 +26,7 @@ const Router = () => {
         <Route path='/' element={<PublicRoute/>}>
           <Route path='/' element={<Login/>} />
           <Route path='/forgot' element={<Forgot/>}/>
-          </Route>
+        </Route>
           {/* privarte route  */}
         <Route path='' element={<PrivateRoute/>}> 
           <Route path='/home' element={<Home/>}/>

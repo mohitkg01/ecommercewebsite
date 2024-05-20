@@ -7,20 +7,34 @@ import { GiFireShrine } from "react-icons/gi";
 import { RiWirelessChargingLine} from "react-icons/ri";
 import { MdNotificationsActive,MdTipsAndUpdates,MdCalendarViewDay  } from "react-icons/md";
 import { FaPeopleGroup } from "react-icons/fa6";
-import {useNavigate} from "react-router-dom";
+import { useNavigate,useMatch} from "react-router-dom";
+
 
 const Sidebar = () => {
   const navigate = useNavigate();
 
+//using use match
+  const game=useMatch('/game');
+  const event=useMatch('/event');
+  const dash=useMatch('/dash');
+  const refree=useMatch('/refree');
+  const users=useMatch('/users');
+  const live=useMatch('/live');
+  const notification=useMatch('/notification');
+  const view=useMatch('/view');
+  const team=useMatch('/team');
+  const update=useMatch('/update');
+  const player=useMatch('/player');
+  
+
   const handleGame=()=>{
-    // console.log("clicked on it");
     navigate('/game');
   }
   const handleEvent=()=>{
     navigate('/event')
   }
   const handleDash=()=>{
-    navigate('/dash')
+      navigate('/dash')
   }
   const handleRefree=()=>{
     navigate('/refree')
@@ -53,17 +67,17 @@ const Sidebar = () => {
 
   return (
     <div className="sidebar">       
-       <div onClick={handleGame}><IoFootballOutline/> <span>Games Management</span></div>
-       <div onClick={handleEvent}><BsCalendar2EventFill/> <span>Event Management</span></div>
-       <div onClick={handleDash}><BiSolidDashboard/> <span>Dashboard Management</span></div>
-       <div onClick={handleRefree}><GiFireShrine/> <span>Refree Management</span></div>       
-       <div onClick={handleUser}><BiSolidUser/> <span>User Management</span></div>       
-       <div onClick={handleLive}><RiWirelessChargingLine /> <span>Live Casting</span></div>       
-       <div onClick={handleNotification}><MdNotificationsActive /> <span>Notification</span></div>       
-       <div onClick={handleView}><MdCalendarViewDay /> <span>View & Export Report</span></div>       
-       <div onClick={handleTeam}><IoPeopleSharp/> <span>Teams Created by User</span></div>       
-       <div onClick={handleUpdate}><MdTipsAndUpdates /> <span>Games update</span></div>       
-       <div onClick={handlePlayer}><FaPeopleGroup /> <span>Player</span></div> 
+      <div onClick={handleGame} className={game ? 'active' : ""}><IoFootballOutline/> <span>Games Management</span></div>
+      <div onClick={handleEvent} className={event ? 'active' : ""}><BsCalendar2EventFill/> <span>Event Management</span></div>
+      <div onClick={handleDash} className={dash ? 'active' : ""}><BiSolidDashboard/> <span>Dashboard Management</span></div>
+      <div onClick={handleRefree} className={refree ? 'active' : ""}><GiFireShrine/> <span>Refree Management</span></div>       
+      <div onClick={handleUser} className={users ? 'active' : ""}><BiSolidUser/> <span>User Management</span></div>       
+      <div onClick={handleLive} className={live ? 'active' : ""}><RiWirelessChargingLine /> <span>Live Casting</span></div>       
+      <div onClick={handleNotification} className={notification ? 'active' : ""}><MdNotificationsActive /> <span>Notification</span></div>       
+      <div onClick={handleView} className={view ? 'active' : ""}><MdCalendarViewDay /> <span>View & Export Report</span></div>       
+      <div onClick={handleTeam} className={team ? 'active' : ""}><IoPeopleSharp/> <span>Teams Created by User</span></div>       
+      <div onClick={handleUpdate} className={update ? 'active' : ""}><MdTipsAndUpdates /> <span>Games update</span></div>       
+      <div onClick={handlePlayer} className={player ? 'active' : ""}><FaPeopleGroup /> <span>Player</span></div> 
        <div className='logout' onClick={handleLogout}>Logout</div>            
     </div>
   )

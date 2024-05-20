@@ -19,3 +19,7 @@
     background-color: #dce2e8;
     border-radius: 10px;
 }
+.active{
+background-color: #4949e347;
+    border-radius: 8px;
+}
