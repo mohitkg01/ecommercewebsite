@@ -14,7 +14,8 @@ const Sidebar = () => {
   const navigate = useNavigate();
 
 //using use match
-  const game=useMatch('/game');
+ const product=useMatch('/product')
+  // const game=useMatch('/game');
   const event=useMatch('/event');
   const dash=useMatch('/dash');
   const refree=useMatch('/refree');
@@ -27,8 +28,11 @@ const Sidebar = () => {
   const player=useMatch('/player');
   
 
-  const handleGame=()=>{
-    navigate('/game');
+  // const handleGame=()=>{
+  //   navigate('/game');
+  // }
+  const handleProduct=()=>{
+    navigate('/product');
   }
   const handleEvent=()=>{
     navigate('/event')
@@ -67,7 +71,8 @@ const Sidebar = () => {
 
   return (
     <div className="sidebar">       
-      <div onClick={handleGame} className={game ? 'active' : ""}><IoFootballOutline/> <span>Games Management</span></div>
+      {/* <div onClick={handleGame} className={game ? 'active' : ""}><IoFootballOutline/> <span>Games Management</span></div> */}
+      <div onClick={handleProduct} className={product ? 'active' : ""}><IoFootballOutline /> <span>Products</span></div> 
       <div onClick={handleEvent} className={event ? 'active' : ""}><BsCalendar2EventFill/> <span>Event Management</span></div>
       <div onClick={handleDash} className={dash ? 'active' : ""}><BiSolidDashboard/> <span>Dashboard Management</span></div>
       <div onClick={handleRefree} className={refree ? 'active' : ""}><GiFireShrine/> <span>Refree Management</span></div>       
