@@ -1,5 +1,5 @@
 import React from 'react'
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, } from "react-router-dom";
 import Forgot from '../pages/forgot/Forgot.jsx';
 import Home from '../pages/home/Home.jsx';
 import Gamespage from '../pages/Gamespage';
@@ -17,6 +17,7 @@ import Login from '../pages/login/Login.jsx';
 import PublicRoute from './PublicRoute.jsx';
 import PrivateRoute from './PrivateRoute';
 import Productpage from '../pages/Productpage.jsx';
+import Productdetail from '../pages/Productdetail.jsx';
 
 
 
@@ -45,6 +46,7 @@ const Router = () => {
             <Route path='/users' element={<Userpage />} />
             <Route path='/view' element={<Viewpage />} />
             <Route path='product' element={<Productpage />} />
+            <Route path='/product/:id' element={<Productdetail/>}/>
           </Route>
           
         </Routes>

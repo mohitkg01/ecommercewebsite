@@ -19,7 +19,7 @@
     height: 200px;
     border-radius: 8px;}
 
-Button{
-    position: absolute;
-        bottom: 5px;
+.btn-card{
+    position: absolute; 
+    bottom: 5px;
 }

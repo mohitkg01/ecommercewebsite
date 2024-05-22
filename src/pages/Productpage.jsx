@@ -1,6 +1,7 @@
 import React from 'react'
 import { useEffect, useState } from 'react'
 import Cards from '../components/Cards';
+// import Productdetail from './Productdetail';
 
 const Productpage = () => {
   const [items, setItems] = useState([]);
@@ -24,7 +25,6 @@ const Productpage = () => {
       {items.map((item) => (
         <Cards data={item} />
       ))}
-
     </div>
 
   )
