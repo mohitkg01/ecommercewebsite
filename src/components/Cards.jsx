@@ -11,10 +11,10 @@ const navigate=useNavigate();
   const callProduct=()=>{
     // <Productdetail data={id}/>
     // console.log(props.data.id);
-    navigate(`/product/${props.data.id}`);
+    navigate(`/product/productdetails/${props.data.id}`);
   }
   return (
-    <Card key={props.data.id} className='cardmain' onClick={callProduct}>
+    <Card key={props.id} className='cardmain' onClick={callProduct}>
       <Card.Img variant="top" src={props.data.thumbnail} style={{width:'10rem', height:'5rem',borderRadius:'5px', marginTop:'8px'}} />
        <Card.Body>
         <Card.Title>{props.data.title}</Card.Title>

@@ -1,9 +1,15 @@
 import React, { useState,useEffect } from 'react'
 import { useParams } from 'react-router-dom';
-import '../styles/Productdetail.css'
+import '../styles/Productdetail.css';
+// import Rating from './Rating';
+import { Rating } from 'react-simple-star-rating'
+// import ReactStars from "react-rating-stars-component";
+
+
 const Productdetail = (props) => {
-// console.log(props);
+
 const [product,setProduct]=useState([]);
+  // const [rating, setRating] = useState()
   let { id } = useParams();
 
   useEffect(() => {
@@ -36,6 +42,27 @@ const [product,setProduct]=useState([]);
         <div className="rating-section">
           <span className='label'>Rating:</span>
           <span className='value'>{product.rating}</span>
+          {/* <span ><Rating rate={product.rating}/></span> */}
+          {/* <span className='value'><Rating initialValue={product.rating} readonly /></span> */}
+        
+          {/* <ReactStars
+            count={5}
+            value={rating}
+            size={24}
+            isHalf={true}
+            edit={false}
+            emptyIcon={<i className="far fa-star"></i>}
+            halfIcon={<i className="fa fa-star-half-alt"></i>}
+            fullIcon={<i className="fa fa-star"></i>}
+            activeColor="#ffd700"
+          /> */}
+          <Rating 
+          readonly={true}
+          initialValue={product.rating}
+          allowFraction={true}
+          size={25}
+          />
+         
         </div>
         <div className='btnshop'>
           <button>Buy Now</button>

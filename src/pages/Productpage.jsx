@@ -21,7 +21,7 @@ const Productpage = () => {
   //     })
   // },[]);
   return (
-    <div className='product'>
+    <div className='product' >
       {items.map((item) => (
         <Cards data={item} />
       ))}

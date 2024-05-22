@@ -119,7 +119,7 @@ const handleForgot=()=>{
             <div className='password'>
                 <label htmlFor="">Enter your password</label> <br />
                 <input type={type} placeholder='****************' value={passwordIn} onChange={(e)=> setPassword(e.target.value)}  />
-                <span  onClick={passwordVisible}>{showPassword ? <FaEyeSlash /> : <FaEye />}  </span>
+                <span className='pass' onClick={passwordVisible}>{showPassword ? <FaEyeSlash /> : <FaEye />}  </span>
             </div> 
     </form >
     <div className='btn'>

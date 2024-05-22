@@ -38,7 +38,7 @@ button{
     border-style: none;
     height: 42px;
 }
-span>:nth-child(1){
+.pass>:nth-child(1){
     margin-left: -30px;
 }
 .img img{
