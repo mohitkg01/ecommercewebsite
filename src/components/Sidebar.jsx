@@ -11,6 +11,7 @@ import { useNavigate,useMatch} from "react-router-dom";
 
 
 const Sidebar = () => {
+  // console.log(props);
   const navigate = useNavigate();
 
 //using use match
@@ -26,7 +27,7 @@ const Sidebar = () => {
   const team=useMatch('/team');
   const update=useMatch('/update');
   const player=useMatch('/player');
-  
+  const productdetails = useMatch('/product/productdetails/:id')
 
   // const handleGame=()=>{
   //   navigate('/game');
@@ -72,7 +73,7 @@ const Sidebar = () => {
   return (
     <div className="sidebar">       
       {/* <div onClick={handleGame} className={game ? 'active' : ""}><IoFootballOutline/> <span>Games Management</span></div> */}
-      <div onClick={handleProduct} className={product ? 'active' : ""}><IoFootballOutline /> <span>Products</span></div> 
+      <div onClick={handleProduct} className={product ||productdetails ?'active': ""}><IoFootballOutline /> <span>Products</span></div> 
       <div onClick={handleEvent} className={event ? 'active' : ""}><BsCalendar2EventFill/> <span>Event Management</span></div>
       <div onClick={handleDash} className={dash ? 'active' : ""}><BiSolidDashboard/> <span>Dashboard Management</span></div>
       <div onClick={handleRefree} className={refree ? 'active' : ""}><GiFireShrine/> <span>Refree Management</span></div>       

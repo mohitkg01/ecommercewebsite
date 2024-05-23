@@ -4,8 +4,10 @@ import '../styles/Cards.css'
 // import Productdetail from '../pages/Productdetail';
 import { useNavigate } from 'react-router-dom';
 
+
 const Cards = (props) => {
-  //  console.log(props.data);
+   console.log(props.data);
+  
 const navigate=useNavigate();
  
   const callProduct=()=>{
@@ -14,7 +16,7 @@ const navigate=useNavigate();
     navigate(`/product/productdetails/${props.data.id}`);
   }
   return (
-    <Card key={props.id} className='cardmain' onClick={callProduct}>
+    <Card key={props.id} onClick={callProduct} className="cardmain">
       <Card.Img variant="top" src={props.data.thumbnail} style={{width:'10rem', height:'5rem',borderRadius:'5px', marginTop:'8px'}} />
        <Card.Body>
         <Card.Title>{props.data.title}</Card.Title>
@@ -24,6 +26,7 @@ const navigate=useNavigate();
          <Button  className="btn-card" variant="primary">Go somewhere</Button>
        </Card.Body>
      </Card>
+
   )
 }
 

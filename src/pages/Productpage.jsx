@@ -21,11 +21,11 @@ const Productpage = () => {
   //     })
   // },[]);
   return (
-    <div className='product' >
-      {items.map((item) => (
-        <Cards data={item} />
+    <div className='product'>
+      {items.map((item,id) => (
+          <Cards data={item}  />
       ))}
-    </div>
+     </div>
 
   )
 }

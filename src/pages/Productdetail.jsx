@@ -22,7 +22,7 @@ const [product,setProduct]=useState([]);
 
   return (
     <div className='product-details'>
-      <div className='img-container'><img src={product.thumbnail} alt="" /></div>
+      <div className='img-container'><img src={product.images} alt="" /></div>
 
       <div className='details'>
       <div className='title'>
@@ -41,21 +41,10 @@ const [product,setProduct]=useState([]);
         </div>
         <div className="rating-section">
           <span className='label'>Rating:</span>
-          <span className='value'>{product.rating}</span>
+          {/* <span className='value'>{product.rating}</span> */}
           {/* <span ><Rating rate={product.rating}/></span> */}
           {/* <span className='value'><Rating initialValue={product.rating} readonly /></span> */}
         
-          {/* <ReactStars
-            count={5}
-            value={rating}
-            size={24}
-            isHalf={true}
-            edit={false}
-            emptyIcon={<i className="far fa-star"></i>}
-            halfIcon={<i className="fa fa-star-half-alt"></i>}
-            fullIcon={<i className="fa fa-star"></i>}
-            activeColor="#ffd700"
-          /> */}
           <Rating 
           readonly={true}
           initialValue={product.rating}
