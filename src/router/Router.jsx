@@ -18,6 +18,7 @@ import PublicRoute from './PublicRoute.jsx';
 import PrivateRoute from './PrivateRoute';
 import Productpage from '../pages/Productpage.jsx';
 import Productdetail from '../pages/Productdetail.jsx';
+import Addproduct from '../pages/popuppage/Addproduct.jsx';
 
 
 
@@ -45,8 +46,9 @@ const Router = () => {
             <Route path='/update' element={<Updatepage />} />
             <Route path='/users' element={<Userpage />} />
             <Route path='/view' element={<Viewpage />} />
-            <Route path='product' element={<Productpage />} />
+            <Route path='/product' element={<Productpage />} />
             <Route path='/product/productdetails/:id' element={<Productdetail/>}/>
+            <Route path='/product/addproduct' element={<Addproduct/>}/>
           </Route>
           
         </Routes>

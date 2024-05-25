@@ -114,11 +114,11 @@ const handleForgot=()=>{
     <form action="">
             <div className='email'>
                 <label htmlFor="" >Enter your email id </label> <br />
-                <input type="text" placeholder='Ex:mohit@gmail.com'  value={emailIn} onChange={(e)=> setEmail(e.target.value)}/>
+                <input class='in' type="text" placeholder='Ex:mohit@gmail.com'  value={emailIn} onChange={(e)=> setEmail(e.target.value)}/>
             </div>
             <div className='password'>
                 <label htmlFor="">Enter your password</label> <br />
-                <input type={type} placeholder='****************' value={passwordIn} onChange={(e)=> setPassword(e.target.value)}  />
+                <input className='in' type={type} placeholder='****************' value={passwordIn} onChange={(e)=> setPassword(e.target.value)}  />
                 <span className='pass' onClick={passwordVisible}>{showPassword ? <FaEyeSlash /> : <FaEye />}  </span>
             </div> 
     </form >

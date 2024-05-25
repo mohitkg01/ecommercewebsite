@@ -1,15 +1,15 @@
 import React, { useState,useEffect } from 'react'
 import { useParams } from 'react-router-dom';
 import '../styles/Productdetail.css';
-// import Rating from './Rating';
 import { Rating } from 'react-simple-star-rating'
 // import ReactStars from "react-rating-stars-component";
-
-
+// import OwlCarousel from 'react-owl-carousel';
+import { Carousel } from 'react-responsive-carousel';
+import "react-responsive-carousel/lib/styles/carousel.min.css";
 const Productdetail = (props) => {
 
 const [product,setProduct]=useState([]);
-  // const [rating, setRating] = useState()
+  const [images, setImage] = useState([])
   let { id } = useParams();
 
   useEffect(() => {
@@ -17,13 +17,24 @@ const [product,setProduct]=useState([]);
       .then(res => res.json())
       .then(data => {
         setProduct(data);
+        setImage(data.images)
       });
   }, [id]);
+  console.log(images.length);
 
   return (
     <div className='product-details'>
-      <div className='img-container'><img src={product.images} alt="" /></div>
-
+      {/* <div className='img-container'> */}
+      <Carousel>
+          {/* <div className='img-container'> */}
+        {images.map((image)=>(
+         
+            <img src={image} alt=""/>
+           
+        ))}
+          {/* </div> */}
+      </Carousel>
+       {/* </div> */}
       <div className='details'>
       <div className='title'>
       <h1>{product.title}</h1>
@@ -42,7 +53,6 @@ const [product,setProduct]=useState([]);
         <div className="rating-section">
           <span className='label'>Rating:</span>
           {/* <span className='value'>{product.rating}</span> */}
-          {/* <span ><Rating rate={product.rating}/></span> */}
           {/* <span className='value'><Rating initialValue={product.rating} readonly /></span> */}
         
           <Rating 

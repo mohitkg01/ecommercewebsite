@@ -91,3 +91,16 @@
     font-size: 16px;
     color: #333;
 }
+.carousel-root {
+    outline: none;
+    width: 50%;
+    margin-left: 4rem;
+}
+.carousel img {
+    border-radius: 10px;
+}
+.carousel .thumb.selected,
+.carousel .thumb:hover {
+    border: 3px solid #a4a0a0;
+    border-radius: 10px;
+}

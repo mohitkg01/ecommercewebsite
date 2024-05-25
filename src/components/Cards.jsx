@@ -6,16 +6,15 @@ import { useNavigate } from 'react-router-dom';
 
 
 const Cards = (props) => {
-   console.log(props.data);
+  //  console.log(props.data);
   
 const navigate=useNavigate();
  
   const callProduct=()=>{
-    // <Productdetail data={id}/>
-    // console.log(props.data.id);
     navigate(`/product/productdetails/${props.data.id}`);
   }
   return (
+   
     <Card key={props.id} onClick={callProduct} className="cardmain">
       <Card.Img variant="top" src={props.data.thumbnail} style={{width:'10rem', height:'5rem',borderRadius:'5px', marginTop:'8px'}} />
        <Card.Body>
@@ -26,7 +25,7 @@ const navigate=useNavigate();
          <Button  className="btn-card" variant="primary">Go somewhere</Button>
        </Card.Body>
      </Card>
-
+    
   )
 }
 
