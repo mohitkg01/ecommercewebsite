@@ -42,9 +42,12 @@ const Login = () => {
 //     }
 // }
 //invalid handler
-  const invalid = () => toast('Invalid Credientials');
+  const invalid = () => toast.error('Invalid Credientials');
 //login success
-// const success=()=>toast("Login succesful");
+const success=()=>{
+  console.log("Success function called");
+  toast.success("Login succesful")
+};
 
 const loginHandler=async ()=>{
     const res= await fetch('https://dummyjson.com/auth/login', {
@@ -52,8 +55,8 @@ const loginHandler=async ()=>{
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           
-          username: 'kminchelle',
-          password: '0lelplR',
+          username: 'emilys',
+          password: 'emilyspass',
           expiresInMins: 30, // optional, defaults to 60
         })
       })
@@ -61,8 +64,9 @@ const loginHandler=async ()=>{
 
       if(res.username===emailIn){
        localStorage.setItem("token",JSON.stringify(res.token));
+       success();
         navigate("/home");
-      // success();
+      
       }
       else{
         // alert("Invalid id and password");
@@ -125,10 +129,11 @@ const handleForgot=()=>{
     <div className='btn'>
     <span className="fg"onClick={handleForgot} title='click to reset your password'>Forgot password?</span>
     <button onClick={loginHandler}>Log In</button>
-    <Toaster />  
+     
     </div>
     </div>
     </div>
+      <Toaster /> 
     </div>
   )
 }

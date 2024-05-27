@@ -7,5 +7,25 @@ display: flex;
 }
 .active {
     background-color: #5c5c6e47;
-    border-radius: 20px;
+    border-radius: 8px;
+}
+/* .search{
+ background-color: red;
+} */
+.searchpage{
+    position: absolute;
+    right: 10rem;
+    top: 90px;
+    }
+.searchpage>input{
+    border-radius: 10px;
+        height: 30px;
+        border-style: dotted;
+}
+.searchpage :nth-child(2){
+     font-size: 37px;
+       font-weight: bold;
+    margin-right: 28px;
+       margin-left: 2px;
+       margin-bottom: -13px;
 }

@@ -46,3 +46,7 @@
 .addproduct button:hover {
     background-color: #0056b3;
 }
+.toss{
+    background-color: tomato;
+    margin-top: 100px;
+}

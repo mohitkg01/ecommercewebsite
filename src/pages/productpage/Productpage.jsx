@@ -1,16 +1,17 @@
 import React from 'react'
 import { useEffect, useState } from 'react'
-import Cards from '../components/Cards';
+import Cards from '../../components/Cards';
 import { useNavigate } from 'react-router-dom';
 // import Addproduct from './popuppage/Addproduct';
 // import Productdetail from './Productdetail';
-import '../styles/Popup.css'
+import '../../styles/Popup.css'
 import Pagination from "react-js-pagination";
 // require("bootstrap/less/bootstrap.less");
 // import 'bootstrap/dist/css/bootstrap.min.css';
-import '../styles/Productpage.css'
+import '../../styles/Productpage.css'
+import Search from '../search/Search';
 
-const Productpage = () => {
+const Productpage = (props) => {
   const [items, setItems] = useState([]);
   const [currpage,setCurrpage]=useState(1);
   const [totalItems, setTotalItems] = useState(0);
@@ -18,15 +19,16 @@ const Productpage = () => {
 
   // const [isOpen, setIsOpen] = useState(false);
   const navigate=useNavigate();
-const itemsPerPage=12;
+const itemsPerPage=9;
   const togglePopup = () => {
     navigate('/product/addproduct');
     // setIsOpen(!isOpen);
   };
   const handlePageChange = (pageNumber) => {
     setCurrpage(pageNumber);
-    console.log(pageNumber);
+    // console.log(pageNumber);
   };
+ 
   useEffect(() => {
     fetch(`https://dummyjson.com/products?limit=${itemsPerPage}&skip=${(currpage - 1) * itemsPerPage}`)
       .then(res => res.json())
@@ -70,6 +72,9 @@ const itemsPerPage=12;
             </div>
           </div>
         )} */}
+      </div>
+      <div className="search">
+        <Search/>
       </div>
     <div className='product'>
       {items.map((item,id) => (

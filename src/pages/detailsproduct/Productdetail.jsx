@@ -1,6 +1,6 @@
 import React, { useState,useEffect } from 'react'
 import { useParams } from 'react-router-dom';
-import '../styles/Productdetail.css';
+import '../../styles/Productdetail.css';
 import { Rating } from 'react-simple-star-rating'
 // import ReactStars from "react-rating-stars-component";
 // import OwlCarousel from 'react-owl-carousel';
@@ -20,7 +20,7 @@ const [product,setProduct]=useState([]);
         setImage(data.images)
       });
   }, [id]);
-  console.log(images.length);
+  // console.log(images.length);
 
   return (
     <div className='product-details'>

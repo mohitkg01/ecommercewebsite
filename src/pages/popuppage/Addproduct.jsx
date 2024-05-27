@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import '../../styles/Addproduct.css'
 import { useNavigate } from 'react-router-dom';
+import toast, { Toaster } from 'react-hot-toast';
+
 const Addproduct = () => {
     // const [id,setId]=useState();
     const navigate = useNavigate();
@@ -12,13 +14,17 @@ const Addproduct = () => {
     const [discription, setDiscription] = useState();
     const [stock, setStock] = useState();
     const [rating, setRating] = useState();
-    const [data, setdata] = useState([]);
+    // const [data, setdata] = useState();
 
-    // const [number,setNumber]=useState();
+    const addedproduct=()=>{
+        console.log("produyct is added");
+        toast.success("Product added succesfully")}
+        
     const submitdata = async () => {
         // console.log(id);
         // console.log(title);
-        await fetch('https://dummyjson.com/products/add', {
+        
+     const response=await fetch('https://dummyjson.com/products/add', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
@@ -34,15 +40,28 @@ const Addproduct = () => {
                 /* other product data */
             })
         })
-            .then(res => res.json())
-            .then(console.log, navigate('/product'));
+
+        if(response.ok){
+            const result=await response.json();
+            console.log(result);
+            // setdata(prev=>[...prev,result]);
+            addedproduct();
+            navigate('/product');
+            
+        }
+            // .then(res => res.json())
+            // .then(console.log,
+            //      navigate('/product'),
+                
+            //     );
+        
     }
-    useEffect(() => {
-        fetch('https://dummyjson.com/products')
-            .then(res => res.json())
-            .then(data => setdata(data))
-    }, []);
-    console.log(data);
+    // useEffect(() => {
+    //     fetch('https://dummyjson.com/products')
+    //         .then(res => res.json())
+    //         .then(data => setdata(data.products))
+    // }, []);
+    // console.log(data);
 
     return (
         <div id='addproduct' className='addproduct' >
@@ -68,7 +87,7 @@ const Addproduct = () => {
                     <label htmlFor="">Discount Percentage</label>
                     <input type="number" value={discount} onChange={e => setDiscount(e.target.value)} />
                 </div>
-
+{/* 
                 <div className='stock'>
                     <label htmlFor="">Stock</label>
                     <input type="number" value={stock} onChange={e => setStock(e.target.value)} />
@@ -76,7 +95,7 @@ const Addproduct = () => {
                 <div className='rating'>
                     <label htmlFor="">Rating</label>
                     <input type="number" value={rating} onChange={e => setRating(e.target.value)} />
-                </div>
+                </div> */}
                 <div className='thumbnail'>
                     <label htmlFor="">Upload Thumbnail</label>
                     <input type="file" value={thumbnail} onChange={e => setThumbnail(e.target.value)} />
@@ -87,6 +106,9 @@ const Addproduct = () => {
                 </div>
             </form>
             <button onClick={submitdata}>submit</button>
+        <div className='tos'>
+                <Toaster />
+        </div>
         </div>
     )
 }
