@@ -10,6 +10,7 @@ import Pagination from "react-js-pagination";
 // import 'bootstrap/dist/css/bootstrap.min.css';
 import '../../styles/Productpage.css'
 import Search from '../search/Search';
+import Deleteproduct from '../delete/Deleteproduct';
 
 const Productpage = (props) => {
   const [items, setItems] = useState([]);
@@ -45,6 +46,10 @@ const itemsPerPage=9;
   //         setItems(res.data);
   //     })
   // },[]);
+  const handleDelete = (deletedItemId) => {
+    setItems(items.filter(item => item.id !== deletedItemId));
+    setTotalItems(totalItems - 1);
+  };
   return (
     <>
     <div>
@@ -77,9 +82,13 @@ const itemsPerPage=9;
         <Search/>
       </div>
     <div className='product'>
-      {items.map((item,id) => (
-          <Cards data={item}  />
-      ))}
+      {items.map((item,id) => {
+        return(
+        <>  <Cards data={item}  />
+          <Deleteproduct data={item} onDelete={handleDelete}/>
+          </>)
+})}
+      
      </div>
      <div >
       <Pagination

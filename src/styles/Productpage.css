@@ -18,14 +18,14 @@ display: flex;
     top: 90px;
     }
 .searchpage>input{
-    border-radius: 10px;
+    border-radius: 5px;
         height: 30px;
-        border-style: dotted;
+    font-size: larger;
 }
 .searchpage :nth-child(2){
-     font-size: 37px;
-       font-weight: bold;
-    margin-right: 28px;
-       margin-left: 2px;
-       margin-bottom: -13px;
+        font-size: 30px;
+            font-weight: bold;
+            margin-right: 8px;
+            margin-left: -38px;
+            margin-bottom: -9px;
 }

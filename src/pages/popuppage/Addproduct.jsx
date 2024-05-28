@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState} from 'react'
 import '../../styles/Addproduct.css'
 import { useNavigate } from 'react-router-dom';
 import toast, { Toaster } from 'react-hot-toast';
@@ -16,7 +16,7 @@ const Addproduct = () => {
     const [rating, setRating] = useState();
     // const [data, setdata] = useState();
 
-    const addedproduct=()=>{
+    const addedprod=()=>{
         console.log("produyct is added");
         toast.success("Product added succesfully")}
         
@@ -24,7 +24,8 @@ const Addproduct = () => {
         // console.log(id);
         // console.log(title);
         
-     const response=await fetch('https://dummyjson.com/products/add', {
+    //  const response=await
+      fetch('https://dummyjson.com/products/add', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
@@ -41,19 +42,22 @@ const Addproduct = () => {
             })
         })
 
-        if(response.ok){
-            const result=await response.json();
-            console.log(result);
-            // setdata(prev=>[...prev,result]);
-            addedproduct();
-            navigate('/product');
+        // if(response.ok){
+        //     const result=await response.json();
+        //     console.log(result);
+        //     // setdata(prev=>[...prev,result]);
             
-        }
-            // .then(res => res.json())
-            // .then(console.log,
-            //      navigate('/product'),
-                
-            //     );
+        //     navigate('/product');
+        //     setTimeout(() => {
+        //         addedproduct();
+        //     }, 2000);
+            
+        // }
+            .then(res => res.json())
+            .then(
+                 navigate('/product'),
+                addedprod(),
+                );
         
     }
     // useEffect(() => {
@@ -66,11 +70,6 @@ const Addproduct = () => {
     return (
         <div id='addproduct' className='addproduct' >
             <form action="">
-                {/* <div>
-                  <label htmlFor="">Product Id</label>
-                  <input type="number"  value={id} onChange={e=>setId(e.target.value)}/>
-            </div> */}
-
                 <div className='title'>
                     <label htmlFor="">Product Title</label>
                     <input type="text" value={title} onChange={e => setTitle(e.target.value)} />
@@ -87,7 +86,7 @@ const Addproduct = () => {
                     <label htmlFor="">Discount Percentage</label>
                     <input type="number" value={discount} onChange={e => setDiscount(e.target.value)} />
                 </div>
-{/* 
+
                 <div className='stock'>
                     <label htmlFor="">Stock</label>
                     <input type="number" value={stock} onChange={e => setStock(e.target.value)} />
@@ -95,7 +94,7 @@ const Addproduct = () => {
                 <div className='rating'>
                     <label htmlFor="">Rating</label>
                     <input type="number" value={rating} onChange={e => setRating(e.target.value)} />
-                </div> */}
+                </div>
                 <div className='thumbnail'>
                     <label htmlFor="">Upload Thumbnail</label>
                     <input type="file" value={thumbnail} onChange={e => setThumbnail(e.target.value)} />
@@ -106,9 +105,7 @@ const Addproduct = () => {
                 </div>
             </form>
             <button onClick={submitdata}>submit</button>
-        <div className='tos'>
-                <Toaster />
-        </div>
+            <Toaster/>
         </div>
     )
 }

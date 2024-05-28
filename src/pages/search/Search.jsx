@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import Cards from '../../components/Cards';
 import { CiSearch } from "react-icons/ci";
+import Deleteproduct from '../delete/Deleteproduct';
 
 const Search = () => {
 const [newlist,setnewlist]=useState([]);
@@ -9,7 +10,10 @@ const [newlist,setnewlist]=useState([]);
 //     setSearch(e.target.value);
 //     // console.log(e.target.value);
 // }
-
+  const handleDelete = (deletedItemId) => {
+    setnewlist(newlist.filter(item => item.id !== deletedItemId));
+    // setTotalItems(totalItems - 1);
+  };
     const handleSearch=(search)=>{
     fetch(`https://dummyjson.com/products/search?q=${search}`)
             .then(res => res.json())
@@ -25,12 +29,17 @@ const [newlist,setnewlist]=useState([]);
   return (
     <>
           <span className='searchpage'>
-          <input type="text" onChange={(e) => handleSearch(e.target.value)} placeholder='Enter your item to search...'/> 
+          <input type="text" onChange={(e) => handleSearch(e.target.value)} placeholder='Search.....'/> 
           <CiSearch />
           </span>
           <div className='product'>
-            {newlist.map((item)=>
-                <Cards data={item}/>)}
+            {newlist.map((item)=>{
+              return(<>
+                <Cards data={item} />
+                <Deleteproduct data={item} onDelete={handleDelete}/>
+              </>)
+            }
+               )}
             </div>  
     </>
   )
