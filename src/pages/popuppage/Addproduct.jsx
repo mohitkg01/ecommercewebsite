@@ -1,8 +1,11 @@
 import React, { useState} from 'react'
 import '../../styles/Addproduct.css'
 import { useNavigate } from 'react-router-dom';
-import toast, { Toaster } from 'react-hot-toast';
-
+// import toast, { Toaster } from 'react-hot-toast';
+import { IoIosClose } from "react-icons/io";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { MdPreview } from "react-icons/md";
 const Addproduct = () => {
     // const [id,setId]=useState();
     const navigate = useNavigate();
@@ -14,17 +17,17 @@ const Addproduct = () => {
     const [discription, setDiscription] = useState();
     const [stock, setStock] = useState();
     const [rating, setRating] = useState();
-    // const [data, setdata] = useState();
-
+    const [isThumbnail, setIsThumbnail]=useState(false);
+    const [isImage,setIsImage]=useState(false);
+    const [thumbnailPreview, setThumbnailPreview] = useState("");
+    const [isBtnPreview,setBtnThumbnail]=useState(false);
+    const [isBtnImage,setBtnImage]=useState(false);
+    const [imagePreview,setImagePreview]=useState("");
     const addedprod=()=>{
-        console.log("produyct is added");
-        toast.success("Product added succesfully")}
+        // console.log("produyct is added");
+        toast("Product added succesfully")}
         
-    const submitdata = async () => {
-        // console.log(id);
-        // console.log(title);
-        
-    //  const response=await
+    const submitdata =  () => {
       fetch('https://dummyjson.com/products/add', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -41,34 +44,45 @@ const Addproduct = () => {
                 /* other product data */
             })
         })
-
-        // if(response.ok){
-        //     const result=await response.json();
-        //     console.log(result);
-        //     // setdata(prev=>[...prev,result]);
-            
-        //     navigate('/product');
-        //     setTimeout(() => {
-        //         addedproduct();
-        //     }, 2000);
-            
-        // }
             .then(res => res.json())
             .then(
-                 navigate('/product'),
                 addedprod(),
-                );
-        
+                 navigate('/product'),
+                
+                );   
     }
-    // useEffect(() => {
-    //     fetch('https://dummyjson.com/products')
-    //         .then(res => res.json())
-    //         .then(data => setdata(data.products))
-    // }, []);
-    // console.log(data);
+    const openPreview=()=>{
+        setIsThumbnail(true);
+        setIsImage(false);
+    }
+    const closePreview=()=>{
+        // console.log("clicked");
+        setIsThumbnail(false);
+    }
 
+    const handleThumbnailChange = (e) => {
+            setThumbnail(e.target.files[0]);
+            setThumbnailPreview(URL.createObjectURL(e.target.files[0]));
+            setBtnThumbnail(true);
+    };
+    const openImage = () => {
+        setIsImage(true);
+        setIsThumbnail(false)
+    }
+    const closeImage = () => {
+        // console.log("clicked");
+        setIsImage(false);
+    }
+   const handleImageChange=(e)=>{
+        setImage(e.target.files[0]);
+       setImagePreview(URL.createObjectURL(e.target.files[0]));
+       setBtnImage(true);
+    }
+   
+const closehandler=()=>navigate('/product');
     return (
         <div id='addproduct' className='addproduct' >
+            <span className='close'><IoIosClose onClick={closehandler}/></span>
             <form action="">
                 <div className='title'>
                     <label htmlFor="">Product Title</label>
@@ -96,16 +110,33 @@ const Addproduct = () => {
                     <input type="number" value={rating} onChange={e => setRating(e.target.value)} />
                 </div>
                 <div className='thumbnail'>
-                    <label htmlFor="">Upload Thumbnail</label>
-                    <input type="file" value={thumbnail} onChange={e => setThumbnail(e.target.value)} />
+                    <label>Upload Thumbnail</label>
+                    <input type="file" onChange={handleThumbnailChange} />
+                    {isBtnPreview && <span onClick={openPreview} style={{ fontSize: '25px',cursor:'pointer' }}><MdPreview/></span>}
+                    {isThumbnail && (
+                        <div className='imagepreview'>
+                            <div className='closeimage'  onClick={closePreview}><IoIosClose /></div>
+                            <div> <img src={thumbnailPreview} alt="thumbnail preview" style={{ width: '180px', height: '180px', border: 'inset' }} />
+                        </div>
+                        </div>
+                    )}
                 </div>
                 <div className='image'>
-                    <label htmlFor="">Upload Image</label>
-                    <input type="file" value={image} onChange={e => setImage(e.target.value)} />
+                    <label>Upload Images</label>
+                    <input type="file" onChange={handleImageChange} />
+                    {isBtnImage && <span onClick={openImage} style={{ fontSize: '25px', cursor: 'pointer' }}><MdPreview /></span>}
+                    {isImage && (
+                        <div className='imagepreview' >
+                            <div className='closeimage' onClick={closeImage}><IoIosClose /></div>
+                            <div> <img src={imagePreview} alt="thumbnail preview" style={{ width: '180px', height: '180px', border: 'inset' }} />
+                            </div>
+                        </div>
+                    )}
                 </div>
             </form>
             <button onClick={submitdata}>submit</button>
-            <Toaster/>
+            {/* <Toaster/> */}
+            <ToastContainer />
         </div>
     )
 }

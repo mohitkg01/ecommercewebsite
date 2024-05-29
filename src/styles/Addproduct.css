@@ -44,3 +44,30 @@
 /* .addproduct input[type="number"]{
     background-color: blue;
 } */
+.close{
+    position: absolute;
+    margin-left: 294px;
+    margin-top: -25px;
+    font-size: 30px;
+    cursor: pointer;
+}
+/* .preview {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    margin: 10px 0;
+} */
+.imagepreview{
+        position: absolute;
+        right: 34%;
+        top: 40rem;
+        margin-top: 12px;
+}
+.closeimage{
+        position: absolute;
+            right: -3%;
+            font-size: 28px;
+            top: -4%;
+            color: red;
+            cursor: pointer;
+}
