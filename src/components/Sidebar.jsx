@@ -16,8 +16,7 @@ const Sidebar = () => {
 
 //using use match
  const product=useMatch('/product')
-  // const game=useMatch('/game');
-  const event=useMatch('/event');
+  const category=useMatch('/category');
   const dash=useMatch('/dash');
   const refree=useMatch('/refree');
   const users=useMatch('/users');
@@ -30,14 +29,15 @@ const Sidebar = () => {
   const productdetails = useMatch('/product/productdetails/:id')
   const addproduct=useMatch('/product/addproduct')
 
+
   // const handleGame=()=>{
   //   navigate('/game');
   // }
   const handleProduct=()=>{
     navigate('/product');
   }
-  const handleEvent=()=>{
-    navigate('/event')
+  const handleCategory=()=>{
+    navigate('/category')
   }
   const handleDash=()=>{
       navigate('/dash')
@@ -75,7 +75,7 @@ const Sidebar = () => {
     <div className="sidebar">       
       {/* <div onClick={handleGame} className={game ? 'active' : ""}><IoFootballOutline/> <span>Games Management</span></div> */}
       <div onClick={handleProduct} className={product ||productdetails || addproduct ?'active': ""}><IoFootballOutline /> <span>Products</span></div> 
-      <div onClick={handleEvent} className={event ? 'active' : ""}><BsCalendar2EventFill/> <span>Event Management</span></div>
+      <div onClick={handleCategory} className={category ? 'active' : ""}><BsCalendar2EventFill/> <span>Category</span></div>
       <div onClick={handleDash} className={dash ? 'active' : ""}><BiSolidDashboard/> <span>Dashboard Management</span></div>
       <div onClick={handleRefree} className={refree ? 'active' : ""}><GiFireShrine/> <span>Refree Management</span></div>       
       <div onClick={handleUser} className={users ? 'active' : ""}><BiSolidUser/> <span>User Management</span></div>       

@@ -5,7 +5,6 @@ import Home from '../pages/home/Home.jsx';
 import Gamespage from '../pages/sidebarspages/Gamespage.jsx';
 import Dashboardpage from '../pages/sidebarspages/Dashboardpage';
 import Refreepage from '../pages/sidebarspages/Refreepage';
-import Eventpage from '../pages/sidebarspages/Eventpage';
 import Livepage from '../pages/sidebarspages/Livepage';
 import Notificationpage from '../pages/sidebarspages/Notificationpage';
 import Playerpage from '../pages/sidebarspages/Playerpage';
@@ -20,6 +19,8 @@ import Productpage from '../pages/productpage/Productpage.jsx';
 import Productdetail from '../pages/detailsproduct/Productdetail.jsx';
 import Addproduct from '../pages/popuppage/Addproduct.jsx';
 import Search from '../pages/search/Search.jsx';
+import Category from '../pages/category/Category.jsx';
+import Categorydetails from '../pages/category/Categorydetails.jsx';
 
 
 
@@ -38,7 +39,6 @@ const Router = () => {
             <Route path='/home' element={<Home />} />
             <Route path='/game' element={<Gamespage />} />
             <Route path='/dash' element={<Dashboardpage />} />
-            <Route path='/event' element={<Eventpage />} />
             <Route path='/live' element={<Livepage />} />
             <Route path='/notification' element={<Notificationpage />} />
             <Route path='/player' element={<Playerpage />} />
@@ -51,6 +51,8 @@ const Router = () => {
             <Route path='/product/productdetails/:id' element={<Productdetail/>}/>
             <Route path='/product/addproduct' element={<Addproduct/>}/>
             <Route path='/product/searchproduct' element={<Search/>}/>
+            <Route path='category' element={<Category/>}/>
+            <Route path='/category/categorydetails/:type' element={<Categorydetails/>}/>
           </Route>
           
         </Routes>
