@@ -48,13 +48,13 @@ const Router = () => {
             <Route path='/users' element={<Userpage />} />
             <Route path='/view' element={<Viewpage />} />
             <Route path='/product' element={<Productpage />} />
-            <Route path='/product/productdetails/:id' element={<Productdetail/>}/>
-            <Route path='/product/addproduct' element={<Addproduct/>}/>
-            <Route path='/product/searchproduct' element={<Search/>}/>
-            <Route path='category' element={<Category/>}/>
-            <Route path='/category/categorydetails/:type' element={<Categorydetails/>}/>
+            <Route path='/product/productdetails/:id' element={<Productdetail />} />
+            <Route path='/product/addproduct' element={<Addproduct />} />
+            <Route path='/product/searchproduct' element={<Search />} />
+            <Route path='category' element={<Category />} />
+            <Route path='/category/categorydetails/:type' element={<Categorydetails />} />
           </Route>
-          
+
         </Routes>
       </BrowserRouter>
     </div>

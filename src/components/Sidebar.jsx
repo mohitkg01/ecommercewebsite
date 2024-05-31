@@ -8,6 +8,8 @@ import { RiWirelessChargingLine} from "react-icons/ri";
 import { MdNotificationsActive,MdTipsAndUpdates,MdCalendarViewDay  } from "react-icons/md";
 import { FaPeopleGroup } from "react-icons/fa6";
 import { useNavigate,useMatch} from "react-router-dom";
+import { useDispatch} from 'react-redux';
+import { logout } from '../store/userSlice';
 
 
 const Sidebar = () => {
@@ -28,7 +30,7 @@ const Sidebar = () => {
   const player=useMatch('/player');
   const productdetails = useMatch('/product/productdetails/:id')
   const addproduct=useMatch('/product/addproduct')
-
+const dispatch=useDispatch();
 
   // const handleGame=()=>{
   //   navigate('/game');
@@ -69,6 +71,8 @@ const Sidebar = () => {
   const handleLogout=()=>{
     navigate('/')
     localStorage.clear();
+    dispatch(logout());
+    // console.log(dispatch(logout()));
   }
 
   return (
