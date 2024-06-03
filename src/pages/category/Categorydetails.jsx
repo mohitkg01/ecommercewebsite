@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import Cards from '../../components/Cards';
+import Deleteproduct from '../delete/Deleteproduct';
+import Editproduct from '../edit/Editproduct';
 
 const Categorydetails = () => {
     const {type}=useParams();
@@ -13,12 +15,21 @@ const Categorydetails = () => {
                 setnewList(data.products);
             });
     })
-
+    const handleDelete = (deletedItemId) => {
+        setnewList(newList.filter(item => item.id !== deletedItemId));
+    };
   return (
       <div id='categorydetails' className='product'>
-        {newList.map((item)=>(
-            <Cards data={item}/>
-        ))}
+        {newList.map((item,id)=>{
+            return(
+                <div key={id}>
+                    <Cards data={item} />
+                    <Deleteproduct data={item} onDelete={handleDelete} />
+                    <Editproduct data={item} />
+                </div>
+            )
+        }
+        )}
       </div>
   )
 }

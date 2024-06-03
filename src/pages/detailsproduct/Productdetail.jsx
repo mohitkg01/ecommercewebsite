@@ -35,7 +35,7 @@ const [product,setProduct]=useState([]);
           {/* </div> */}
       </Carousel>
        {/* </div> */}
-      <div className='details'>
+      <div className='details' key={product.id}>
       <div className='title'>
       <h1>{product.title}</h1>
           <p>{product.description}</p>

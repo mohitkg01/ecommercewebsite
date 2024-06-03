@@ -1,13 +1,13 @@
-import React, { useState} from 'react'
+import React, { useEffect, useState} from 'react'
 import '../../styles/Addproduct.css'
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 // import toast, { Toaster } from 'react-hot-toast';
 import { IoIosClose } from "react-icons/io";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { MdPreview } from "react-icons/md";
 const Addproduct = () => {
-    // const [id,setId]=useState();
+    const {id}=useParams();
     const navigate = useNavigate();
     const [title, setTitle] = useState();
     const [price, setPrice] = useState();
@@ -37,7 +37,7 @@ const Addproduct = () => {
                 discountPercentage: discount,
                 discription: discription,
                 stock: stock,
-                images: image,
+                images: [image],
                 rating: rating,
                 thumbnail: thumbnail
 
@@ -80,6 +80,30 @@ const Addproduct = () => {
     }
    
 const closehandler=()=>navigate('/product');
+
+useEffect(()=>{
+    if(id){
+        /* updating title of product with id 1 */
+        fetch(`https://dummyjson.com/products/${id}`, {
+            // method: 'PUT', /* or PATCH */
+            // headers: { 'Content-Type': 'application/json' },
+            // body: JSON.stringify({
+            //     // title: 'iPhone Galaxy +1'
+            //     title:title
+            // })
+        })
+            .then(res => res.json())
+            .then(data=>{
+                setTitle(data.title);
+                setPrice(data.price);
+                setDiscount(data.discountPercentage);;
+                setStock(data.stock);
+                setRating(data.rating);
+                setThumbnail(data.thumbnail);
+                setThumbnailPreview(data.thumbnail);
+            });
+    }
+},[id])
     return (
         <div id='addproduct' className='addproduct' >
             <span className='close'><IoIosClose onClick={closehandler}/></span>

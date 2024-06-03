@@ -37,7 +37,7 @@ const Deleteproduct = ({ data, onDelete }) => {
 
   return (
     <>
-      <div className='btnspan'> <MdDelete onClick={deleteItem} /></div>
+      <span className='btnspan'> <MdDelete onClick={deleteItem} /></span>
       <Toaster /></>
       
   )

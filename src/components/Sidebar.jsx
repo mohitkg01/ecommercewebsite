@@ -30,6 +30,7 @@ const Sidebar = () => {
   const player=useMatch('/player');
   const productdetails = useMatch('/product/productdetails/:id')
   const addproduct=useMatch('/product/addproduct')
+  const categorydetails = useMatch('/category/categorydetails/:list')
 const dispatch=useDispatch();
 
   // const handleGame=()=>{
@@ -72,14 +73,14 @@ const dispatch=useDispatch();
     navigate('/')
     localStorage.clear();
     dispatch(logout());
-    // console.log(dispatch(logout()));
+    console.log(dispatch(logout()));
   }
 
   return (
     <div className="sidebar">       
       {/* <div onClick={handleGame} className={game ? 'active' : ""}><IoFootballOutline/> <span>Games Management</span></div> */}
       <div onClick={handleProduct} className={product ||productdetails || addproduct ?'active': ""}><IoFootballOutline /> <span>Products</span></div> 
-      <div onClick={handleCategory} className={category ? 'active' : ""}><BsCalendar2EventFill/> <span>Category</span></div>
+      <div onClick={handleCategory} className={category || categorydetails ? 'active' : ""}><BsCalendar2EventFill/> <span>Category</span></div>
       <div onClick={handleDash} className={dash ? 'active' : ""}><BiSolidDashboard/> <span>Dashboard Management</span></div>
       <div onClick={handleRefree} className={refree ? 'active' : ""}><GiFireShrine/> <span>Refree Management</span></div>       
       <div onClick={handleUser} className={users ? 'active' : ""}><BiSolidUser/> <span>User Management</span></div>       

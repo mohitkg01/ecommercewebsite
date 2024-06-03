@@ -2,15 +2,12 @@ import React from 'react'
 import { useEffect, useState } from 'react'
 import Cards from '../../components/Cards';
 import { useNavigate } from 'react-router-dom';
-// import Addproduct from './popuppage/Addproduct';
-// import Productdetail from './Productdetail';
 import '../../styles/Popup.css'
 import Pagination from "react-js-pagination";
-// require("bootstrap/less/bootstrap.less");
-// import 'bootstrap/dist/css/bootstrap.min.css';
 import '../../styles/Productpage.css'
 import Search from '../search/Search';
 import Deleteproduct from '../delete/Deleteproduct';
+import Editproduct from '../edit/Editproduct';
 
 const Productpage = (props) => {
   const [items, setItems] = useState([]);
@@ -50,6 +47,7 @@ const itemsPerPage=9;
     setItems(items.filter(item => item.id !== deletedItemId));
     setTotalItems(totalItems - 1);
   };
+  
   return (
     <>
     <div>
@@ -84,9 +82,11 @@ const itemsPerPage=9;
     <div className='product'>
       {items.map((item,id) => {
         return(
-        <>  <Cards data={item}  />
-          <Deleteproduct data={item} onDelete={handleDelete}/>
-          </>)
+        <div key={id}>
+            <Cards data={item}  />
+           <Deleteproduct data={item} onDelete={handleDelete}/>
+            <Editproduct data={item}/>
+          </div>)
 })}
       
      </div>

@@ -31,25 +31,25 @@
     border-radius: 4px;
     box-sizing: border-box;
 }
-.addproduct input[type="file"]{
+/* .addproduct input[type="file"]{
         width: 222px;
         margin-left: -22rem;
         cursor: pointer;
-}
+} */
 .addproduct input[type="text"] {
     height: 62px;
         width: 93%;
-        margin-left: -23px;
+    margin-left: -2px;
 }
 /* .addproduct input[type="number"]{
     background-color: blue;
 } */
 .close{
-    position: absolute;
-    margin-left: 294px;
-    margin-top: -25px;
+    position: relative;
     font-size: 30px;
     cursor: pointer;
+    left: 99%;
+    top: -28px;
 }
 /* .preview {
     width: 100px;
@@ -60,8 +60,8 @@
 .imagepreview{
         position: absolute;
         right: 34%;
-        top: 40rem;
-        margin-top: 12px;
+        top: 42rem;
+        margin-top: 22px;
 }
 .closeimage{
         position: absolute;

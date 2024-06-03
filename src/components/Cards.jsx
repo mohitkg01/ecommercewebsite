@@ -16,7 +16,7 @@ const navigate=useNavigate();
   }
   return (
     <>
-    <Card key={props.id} onClick={callProduct} className="cardmain">
+    <Card onClick={callProduct} className="cardmain">
       <Card.Img variant="top" src={props.data.thumbnail} style={{width:'10rem', height:'5rem',borderRadius:'5px', marginTop:'8px'}} />
        <Card.Body>
         <Card.Title>{props.data.title}</Card.Title>
