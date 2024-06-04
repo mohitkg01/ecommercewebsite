@@ -11,6 +11,8 @@ import * as yup from "yup";
 import { useDispatch } from 'react-redux';
 import { login } from '../../store/userSlice';
 
+console.log(login);
+console.log(useDispatch);
 const schema = yup.object().shape({
   username: yup.string().default('emilys').required("corret your username to emilys"),
   password: yup.string().min(8).max(32).required("password must be at least 8 characters"),
@@ -27,38 +29,13 @@ const Login = () => {
   const { register, handleSubmit, formState: { errors } } = useForm({
     resolver: yupResolver(schema),
   });
-  //getting data 
-  // const em=localStorage.getItem("email");
-  // const email=JSON.parse(em);
-  // const pa=localStorage.getItem("pass");
-  // const pass=JSON.parse(pa);
-  // const tokenraw=localStorage.getItem("tk");
-  // // const lstoken=JSON.parse(tokenraw);
-  // console.log(tokenraw);
+  
 
-
-  //loginhandler 
-  // const loginHandler=async ()=>{
-  //     const res= await axios.post('https://dummyjson.com/auth/login'
-  //     , {
-  //         username: 'kminchelle',
-  //         password: '0lelplR',    
-  //       }
-  //     );
-
-  //     if(res.data.username===emailIn  ){
-  //         localStorage.setItem("tk",JSON.stringify(res.data.token));
-  //         // navigate('/home')
-  //     }
-  //     else{
-  //         
-  //     }
-  // }
   //invalid handler
   const invalid = () => toast.error('Invalid Credientials');
   //login success
   const success = () => {
-    console.log("Success function called");
+    // console.log("Success function called");
     toast.success("Login succesful")
   };
 
