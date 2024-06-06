@@ -4,7 +4,22 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { IoIosClose } from "react-icons/io";
 import { toast } from 'react-toastify';
 import { MdPreview } from "react-icons/md";
+import * as Yup from "yup";
+import { Formik, Form, Field, ErrorMessage } from 'formik';
 
+const validationSchema = Yup.object({
+    name: Yup.string()
+        .required('Title is required')
+        .min(4, 'Title must be at least 4 characters'),
+    price: Yup.number()
+        .required('Price is required'),
+    discount: Yup.number()
+        .required('Discount is required'),
+    stock: Yup.number()
+        .required('Stock is required'),
+    rating: Yup.number()
+        .required('Rating is required')
+});
 const Addproduct = () => {
     const {id}=useParams();
     const navigate = useNavigate();
@@ -13,7 +28,6 @@ const Addproduct = () => {
     const [image, setImage] = useState([]);
     const [thumbnail, setThumbnail] = useState();
     const [discount, setDiscount] = useState();
-    const [discription, setDiscription] = useState();
     const [stock, setStock] = useState();
     const [rating, setRating] = useState();
     const [isThumbnail, setIsThumbnail]=useState(false);
@@ -22,16 +36,16 @@ const Addproduct = () => {
     const [isBtnPreview,setBtnThumbnail]=useState(false);
     const [isBtnImage,setBtnImage]=useState(false);
     const [imagePreview,setImagePreview]=useState("");
-        
-    const submitdata =  () => {
+
+    const submitdata =  (values) => {
       fetch('https://dummyjson.com/products/add', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
-                title: title,
-                price: price,
+                title: values.title,
+                price: values.price,
                 discountPercentage: discount,
-                discription: discription,
+                // discription: discription,
                 stock: stock,
                 images: [image],
                 rating: rating,
@@ -102,25 +116,41 @@ useEffect(()=>{
     }
 },[id])
     return (
+        <Formik 
+            initialValues={{ name: title, price: price , stock:stock , discount:discount,rating:rating}}
+            validationSchema={validationSchema}
+            enableReinitialize={true}
+            onSubmit={submitdata}>
+    {({ isSubmitting }) => (
         <div id='addproduct' className='addproduct' >
             <span className='close'><IoIosClose onClick={closehandler}/></span>
-            <form action="">
-                <div className='title'>
-                    <label htmlFor="">Product Title</label>
-                    <input type="text" value={title} onChange={e => setTitle(e.target.value)} />
-                </div>
-                <div className='discription'>
-                    <label htmlFor="">Discription</label>
-                    <input type="text" value={discription} onChange={e => setDiscription(e.target.value)} />
-                </div>
-                <div className='price'>
-                    <label htmlFor="">Price</label>
-                    <input type="number" value={price} onChange={e => setPrice(e.target.value)} />
-                </div>
-                <div className='discount'>
-                    <label htmlFor="">Discount Percentage</label>
-                    <input type="number" value={discount} onChange={e => setDiscount(e.target.value)} />
-                </div>
+                <Form>
+                    <div className='title'>
+                        <label htmlFor="name">Product Title</label>
+                        <Field type="text" name="name" />
+                        <ErrorMessage name="name" component="div" />
+                    </div>
+                    <div className='price'>
+                    <label htmlFor="price">Price</label>
+                    <Field type="number" name="price" />
+                    <ErrorMessage name="price" component="div" />
+                    </div>
+                    <div className='discount'>
+                        <label htmlFor="">Discount Percentage</label>
+                        <Field type="number" name="" />
+                        <ErrorMessage name="discount" component="div" />
+                    </div>
+                    <div className='stock'>
+                        <label htmlFor="">Stock</label>
+                        <Field type="number" name="" />
+                        <ErrorMessage name="stock" component="div" />
+                    </div>
+                    <div className='rating'>
+                        <label htmlFor="">Rating</label>
+                        <Field type="number" name="" />
+                        <ErrorMessage name="rating" component="div" />
+                    </div>
+                {/*
 
                 <div className='stock'>
                     <label htmlFor="">Stock</label>
@@ -129,16 +159,16 @@ useEffect(()=>{
                 <div className='rating'>
                     <label htmlFor="">Rating</label>
                     <input type="number" value={rating} onChange={e => setRating(e.target.value)} />
-                </div>
+                </div> */}
                 <div className='thumbnail'>
                     <label>Upload Thumbnail</label>
                     <input type="file" onChange={handleThumbnailChange} />
-                    {isBtnPreview && <span onClick={openPreview} style={{ fontSize: '25px',cursor:'pointer' }}><MdPreview/></span>}
+                    {isBtnPreview && <span onClick={openPreview} style={{ fontSize: '25px', cursor: 'pointer' }}><MdPreview /></span>}
                     {isThumbnail && (
                         <div className='imagepreview'>
-                            <div className='closeimage'  onClick={closePreview}><IoIosClose /></div>
+                            <div className='closeimage' onClick={closePreview}><IoIosClose /></div>
                             <div> <img src={thumbnailPreview} alt="thumbnail preview" style={{ width: '180px', height: '180px', border: 'inset' }} />
-                        </div>
+                            </div>
                         </div>
                     )}
                 </div>
@@ -154,9 +184,11 @@ useEffect(()=>{
                         </div>
                     )}
                 </div>
-            </form>
-            <button onClick={submitdata}>submit</button>
-        </div>
+                 <button type="submit" disabled={isSubmitting}>Submit </button>
+                    </Form>
+                </div>
+               )}
+        </Formik>
     )
 }
 

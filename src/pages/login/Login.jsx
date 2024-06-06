@@ -1,28 +1,33 @@
 import React, { useState } from 'react'
 import '../../styles/Login.css'
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
-// import img from '../../assets/img.jpg';
 import { useNavigate } from "react-router-dom";
-// import axios from 'axios';
-import { useForm } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
-import * as yup from "yup";
+// import { useForm } from "react-hook-form";
+// import { yupResolver } from "@hookform/resolvers/yup";
+import * as Yup from "yup";
 import { useDispatch } from 'react-redux';
-// import { login } from '../../store/userSlice';
 import { toast } from 'react-toastify';
 import SideImage from './SideImage';
 import { login_user } from './reduxContainer/Action';
+import { Formik, Form, Field, ErrorMessage } from 'formik';
 
-// console.log(login);
-// console.log(useDispatch);
-const schema = yup.object().shape({
-  username: yup.string().default('emilys').required("corret your username to emilys"),
-  password: yup.string().min(8).max(32).required("password must be at least 8 characters"),
+
+// const schema = yup.object().shape({
+//   username: yup.string().default('emilys').required("corret your username to emilys"),
+//   password: yup.string().min(8).max(32).required("password must be at least 8 characters"),
+// });
+const validationSchema = Yup.object({
+  username: Yup.string()
+    // .email('Invalid email address')
+    .required('Username must be emilys'),
+  password: Yup.string()
+    .required('Password is required')
+    .min(6, 'Password must be at least 6 characters'),
 });
 
 const Login = () => {
-  const [emailIn, setEmail] = useState("");
-  const [passwordIn, setPassword] = useState("");
+  // const [emailIn, setEmail] = useState("");
+  // const [passwordIn, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [type, setType] = useState('password');
   const navigate = useNavigate();
@@ -32,11 +37,12 @@ const Login = () => {
 
 
   
-  const { register, handleSubmit, formState: { errors } } = useForm({
-    resolver: yupResolver(schema),
-  });
+  // const { register, handleSubmit, formState: { errors } } = useForm({
+  //   resolver: yupResolver(schema),
+  // });
 
-  const onSubmitHandler = async () => {
+  const onSubmitHandler = async (values) => {
+    console.log(values);
     const res = await fetch('https://dummyjson.com/auth/login', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -48,16 +54,14 @@ const Login = () => {
       })
     })
       .then(res => res.json())
-    if (res.username === emailIn) {
-      // const token = JSON.stringify(res.token);
-      // dispatch(login({ token }));
+    if (res.username === values.username) {
       const token = res.token;
       const username = res.username;
 
       // Dispatch login action
       dispatch(login_user(token, username));
 
-      localStorage.setItem("token", JSON.stringify(res.token));
+      // localStorage.setItem("token", JSON.stringify(res.token));
       toast.success("Login Successful", {
         position: "top-center"
       })
@@ -109,11 +113,14 @@ const Login = () => {
     navigate("/phonenumber");
   }
   return (
+    <Formik
+      initialValues={{ username:'',password:'' }}
+      validationSchema={validationSchema}
+      enableReinitialize={true}
+      onSubmit={onSubmitHandler}>
+      {({ isSubmitting }) => (
     <div className='main'>
       <div className="page">
-        {/* <div className="img">
-          <img src={img} alt="" />
-        </div> */}
         <SideImage/>
         <div className="input">
           {/* <form action="">
@@ -127,40 +134,31 @@ const Login = () => {
                 <span className='pass' onClick={passwordVisible}>{showPassword ? <FaEyeSlash /> : <FaEye />}  </span>
             </div> 
     </form > */}
-          <form onSubmit={handleSubmit(onSubmitHandler)}>
-            <h1>Lets Log in you in.</h1>
-
+              <Form>
+              <h1>Lets Log in you in.</h1>
             <div className='email'>
               <label htmlFor="" >Enter your email id </label><br />
-              <input className='in' {...register("username")} placeholder="Username" type="text" value={emailIn} onChange={(e) => setEmail(e.target.value)} required />
-              <p>{errors.username?.message}</p>
+              <Field className='in' type="text" name="username" />
+              <ErrorMessage name="username" component="div" />
             </div>
             <div className='password'>
               <label htmlFor="">Enter your password</label><br />
-              <input className='in'
-                {...register("password")}
-                placeholder="password"
-                value={passwordIn}
-                type={type} onChange={(e) => setPassword(e.target.value)}
-                required
-              />
+              <Field className='in' type={type} name="password" />
+             
               <span className='pass' onClick={passwordVisible}>{showPassword ? <FaEyeSlash /> : <FaEye />}  </span>
-              <p>{errors.password?.message}</p>
+                  <ErrorMessage name="password" component="div" />
             </div>
             <div className='btn'>
               <span className="fg" onClick={handleForgot} title='click to reset your password'>Forgot password?</span>
               <span className="otp" onClick={handleLoginwithotp} title='click to login with mobile no'>Otp Login</span>
-              <button type="submit">Log in</button>
+                <button type="submit" disabled={isSubmitting}>Log In</button>
             </div>
-          </form>
-          {/* <div className='btn'>
-    <span className="fg"onClick={handleForgot} title='click to reset your password'>Forgot password?</span>
-    <button onClick={loginHandler}>Log In</button>
-    </div> */}
-    
-          </div>
+                </Form>
+           </div>
         </div>
       </div>
+      )}
+      </Formik>
   )
 }
 export default Login;

@@ -14,8 +14,13 @@
     margin-right: 50px;
     cursor: pointer;
 }
-.call>:nth-child(1){
+/* .call>:nth-child(1){
     background-color: #a7a1a1bd;
     padding: 12px;
     border-radius: 18px;
+} */
+.call{
+    background-color: #a7a1a1bd;
+        padding: 12px;
+        border-radius: 12px;
 }
