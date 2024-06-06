@@ -9,7 +9,9 @@ import { MdNotificationsActive,MdTipsAndUpdates,MdCalendarViewDay  } from "react
 import { FaPeopleGroup } from "react-icons/fa6";
 import { useNavigate,useMatch} from "react-router-dom";
 import { useDispatch} from 'react-redux';
-import { logout } from '../store/userSlice';
+import { logout_user } from '../pages/login/reduxContainer/Action';
+
+
 
 
 const Sidebar = () => {
@@ -72,8 +74,7 @@ const dispatch=useDispatch();
   const handleLogout=()=>{
     navigate('/')
     localStorage.clear();
-    dispatch(logout());
-    console.log(dispatch(logout()));
+    dispatch(logout_user);
   }
 
   return (

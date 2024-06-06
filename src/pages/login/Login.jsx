@@ -1,18 +1,20 @@
 import React, { useState } from 'react'
 import '../../styles/Login.css'
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
-import img from '../../assets/img.jpg';
+// import img from '../../assets/img.jpg';
 import { useNavigate } from "react-router-dom";
 // import axios from 'axios';
-import toast, { Toaster } from 'react-hot-toast';
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { useDispatch } from 'react-redux';
-import { login } from '../../store/userSlice';
+// import { login } from '../../store/userSlice';
+import { toast } from 'react-toastify';
+import SideImage from './SideImage';
+import { login_user } from './reduxContainer/Action';
 
-console.log(login);
-console.log(useDispatch);
+// console.log(login);
+// console.log(useDispatch);
 const schema = yup.object().shape({
   username: yup.string().default('emilys').required("corret your username to emilys"),
   password: yup.string().min(8).max(32).required("password must be at least 8 characters"),
@@ -25,19 +27,14 @@ const Login = () => {
   const [type, setType] = useState('password');
   const navigate = useNavigate();
   const dispatch=useDispatch();
+  
 
+
+
+  
   const { register, handleSubmit, formState: { errors } } = useForm({
     resolver: yupResolver(schema),
   });
-  
-
-  //invalid handler
-  const invalid = () => toast.error('Invalid Credientials');
-  //login success
-  const success = () => {
-    // console.log("Success function called");
-    toast.success("Login succesful")
-  };
 
   const onSubmitHandler = async () => {
     const res = await fetch('https://dummyjson.com/auth/login', {
@@ -52,17 +49,25 @@ const Login = () => {
     })
       .then(res => res.json())
     if (res.username === emailIn) {
-      const token = JSON.stringify(res.token);
-      dispatch(login({ token }));
+      // const token = JSON.stringify(res.token);
+      // dispatch(login({ token }));
+      const token = res.token;
+      const username = res.username;
+
+      // Dispatch login action
+      dispatch(login_user(token, username));
 
       localStorage.setItem("token", JSON.stringify(res.token));
-      success();
-      navigate("/home");
+      toast.success("Login Successful", {
+        position: "top-center"
+      })
+    navigate("/home");
 
     }
     else {
-      // alert("Invalid id and password");
-      invalid();
+      toast.error("Invalid Details", {
+        position: "top-center"
+      })
     }
   }
 
@@ -100,12 +105,16 @@ const Login = () => {
   const handleForgot = () => {
     navigate("/forgot");
   }
+  const handleLoginwithotp=()=>{
+    navigate("/phonenumber");
+  }
   return (
     <div className='main'>
       <div className="page">
-        <div className="img">
+        {/* <div className="img">
           <img src={img} alt="" />
-        </div>
+        </div> */}
+        <SideImage/>
         <div className="input">
           {/* <form action="">
             <div className='email'>
@@ -119,8 +128,8 @@ const Login = () => {
             </div> 
     </form > */}
           <form onSubmit={handleSubmit(onSubmitHandler)}>
-            <h2>Lets Log in you in.</h2>
-            <br />
+            <h1>Lets Log in you in.</h1>
+
             <div className='email'>
               <label htmlFor="" >Enter your email id </label><br />
               <input className='in' {...register("username")} placeholder="Username" type="text" value={emailIn} onChange={(e) => setEmail(e.target.value)} required />
@@ -140,6 +149,7 @@ const Login = () => {
             </div>
             <div className='btn'>
               <span className="fg" onClick={handleForgot} title='click to reset your password'>Forgot password?</span>
+              <span className="otp" onClick={handleLoginwithotp} title='click to login with mobile no'>Otp Login</span>
               <button type="submit">Log in</button>
             </div>
           </form>
@@ -147,10 +157,10 @@ const Login = () => {
     <span className="fg"onClick={handleForgot} title='click to reset your password'>Forgot password?</span>
     <button onClick={loginHandler}>Log In</button>
     </div> */}
+    
+          </div>
         </div>
       </div>
-      <Toaster />
-    </div>
   )
 }
 export default Login;

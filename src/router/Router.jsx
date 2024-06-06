@@ -21,12 +21,12 @@ import Addproduct from '../pages/popuppage/Addproduct.jsx';
 import Search from '../pages/search/Search.jsx';
 import Category from '../pages/category/Category.jsx';
 import Categorydetails from '../pages/category/Categorydetails.jsx';
-import { Page } from '../pages/Page.jsx';
+// import { Page } from '../pages/Page.jsx';
 import { ToastContainer } from 'react-toastify';
-import Loginfor from '../pages/Loginfor.jsx';
-
-
-
+// import Loginfor from '../pages/Loginfor.jsx';
+import 'react-toastify/dist/ReactToastify.css';
+import PhoneNumber from '../pages/login/PhoneNumber.jsx';
+import Otppage from '../pages/login/Otppage.jsx';
 
 const Router = () => {
   return (
@@ -37,6 +37,8 @@ const Router = () => {
           <Route path='/' element={<PublicRoute />}>
             <Route path='/' element={<Login />} />
             <Route path='/forgot' element={<Forgot />} />
+            <Route path='/phonenumber' element={<PhoneNumber />} />
+            <Route path='phonenumber/otppage' element={<Otppage/>}/>
           </Route>
           {/* privarte route  */}
           <Route path='' element={<PrivateRoute />}>
@@ -58,8 +60,9 @@ const Router = () => {
             <Route path='category' element={<Category />} />
             <Route path='/category/categorydetails/:type' element={<Categorydetails />} />
             <Route path='/product/addproduct/:id' element={<Addproduct/>}/>
-            <Route path='page' element={<Page/>}/>
-            <Route path='login' element={<Loginfor/>}/>
+            
+            {/* <Route path='page' element={<Page/>}/> */}
+            {/* <Route path='login' element={<Loginfor/>}/> */}
 
           </Route>
         </Routes>

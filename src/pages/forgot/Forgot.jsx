@@ -1,6 +1,6 @@
 import React from 'react'
-import img from '../../assets/img.jpg';
 import { useState } from 'react';
+import SideImage from '../login/SideImage';
 const Forgot = () => {
   const [emailIn,setEmail]=useState("");
   const passwordHandlers=()=>{
@@ -9,14 +9,12 @@ const Forgot = () => {
   return (
     <div className='main' id='forgot'>
     <div className="page">
-    <div className="img">
-        <img src={img} alt="" />
-    </div>
+    <SideImage/>
     <div className="input">
     <form action="">
             <div className='email'>
                 <label htmlFor="" >Enter your email</label> <br />
-                <input type="email" placeholder='Enter email here'  value={emailIn} onChange={(e)=> setEmail(e.target.value)}/>
+              <input className='in' type="email" placeholder='Enter email here'  value={emailIn} onChange={(e)=> setEmail(e.target.value)}/>
             </div>
     </form >
     <button onClick={passwordHandlers}>Reset Password</button>

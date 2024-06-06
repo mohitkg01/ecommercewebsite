@@ -1,11 +1,10 @@
 import React, { useEffect, useState} from 'react'
 import '../../styles/Addproduct.css'
 import { useNavigate, useParams } from 'react-router-dom';
-// import toast, { Toaster } from 'react-hot-toast';
 import { IoIosClose } from "react-icons/io";
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { toast } from 'react-toastify';
 import { MdPreview } from "react-icons/md";
+
 const Addproduct = () => {
     const {id}=useParams();
     const navigate = useNavigate();
@@ -23,9 +22,6 @@ const Addproduct = () => {
     const [isBtnPreview,setBtnThumbnail]=useState(false);
     const [isBtnImage,setBtnImage]=useState(false);
     const [imagePreview,setImagePreview]=useState("");
-    const addedprod=()=>{
-        // console.log("produyct is added");
-        toast("Product added succesfully")}
         
     const submitdata =  () => {
       fetch('https://dummyjson.com/products/add', {
@@ -46,9 +42,10 @@ const Addproduct = () => {
         })
             .then(res => res.json())
             .then(
-                addedprod(),
+                toast.success("Product added succesfully", {
+                    position: "top-center"
+                }),
                  navigate('/product'),
-                
                 );   
     }
     const openPreview=()=>{
@@ -159,8 +156,6 @@ useEffect(()=>{
                 </div>
             </form>
             <button onClick={submitdata}>submit</button>
-            {/* <Toaster/> */}
-            <ToastContainer />
         </div>
     )
 }

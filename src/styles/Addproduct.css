@@ -45,11 +45,11 @@
     background-color: blue;
 } */
 .close{
-    position: relative;
-    font-size: 30px;
+position: relative;
+    font-size: 34px;
     cursor: pointer;
-    left: 99%;
-    top: -28px;
+    left: 51%;
+    top: -27px;
 }
 /* .preview {
     width: 100px;

@@ -1,14 +1,14 @@
 .product{
     display: flex;
         flex-wrap: wrap;
-        margin-left: 23rem;
+        margin-left: 25rem;
         margin-top: -20px;
         /* overflow: hidden; */
         margin-bottom: 50px;
         margin-right: 16px;
 }
 .cardmain{
-    /* width: 31%; */
+width: 97%;
     position: relative;
     margin-top: 26px;
     margin-bottom: 4px;
@@ -35,9 +35,9 @@
     right: 28px;
     cursor: pointer; */
         position: relative;
-            top: -78%;
-            left: 95%;
-            cursor: pointer;
+        top: -78%;
+        left: 47%;
+        cursor: pointer;
 }
 .btnspan>:nth-child(1):hover{
     color:red;
@@ -49,6 +49,6 @@
 .editbtn{
         position: relative;
         cursor: pointer;
-            left: 84%;
+            left: 34%;
             top: -79%;
 }
