@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom'
 import Cards from '../../components/Cards';
 import Deleteproduct from '../delete/Deleteproduct';
 import Editproduct from '../edit/Editproduct';
+import Loaderanimation from '../animation/Loaderanimation';
 
 const Categorydetails = () => {
     const {type}=useParams();
@@ -28,7 +29,7 @@ const Categorydetails = () => {
     };
   return (
       <div id='categorydetails' className='product'>
-        {newList.map((item)=>{
+        { newList.length>0 ?newList.map((item)=>{
             return(
                 <div key={item.id}>
                     <Cards data={item} />
@@ -37,7 +38,7 @@ const Categorydetails = () => {
                 </div>
             )
         }
-        )}
+        ) :<Loaderanimation/>}
       </div>
   )
 }

@@ -1,18 +1,18 @@
 .product{
     display: flex;
         flex-wrap: wrap;
-        margin-left: 25rem;
+        margin-left: 18rem;
         margin-top: -20px;
         /* overflow: hidden; */
         margin-bottom: 50px;
         margin-right: 16px;
 }
 .cardmain{
-width: 97%;
+/* width: 97%; */
     position: relative;
     margin-top: 26px;
     margin-bottom: 4px;
-    margin-left: 14px;
+    margin-left: 32px;
     background: #f0f8ff59;
     box-shadow: 1px 1px 1px #526976;
     box-sizing: border-box;
@@ -23,6 +23,7 @@ width: 97%;
     /* position: absolute;  */
     bottom: 5px;
     margin-top: 10px;
+    margin: 10px;
 }
 /* .addbtn {
     background-color: brown;

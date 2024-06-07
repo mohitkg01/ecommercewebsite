@@ -4,7 +4,7 @@ import '../../styles/Category.css';
 
 const Category = () => {
   const [categorylist, setCategoryList] = useState([]);
-  const [selecttype,setSelectedtype]=useState();
+  const [selecttype,setSelectedtype]=useState('');
   const navigate=useNavigate();
 
   useEffect(() => {
@@ -37,7 +37,7 @@ const Category = () => {
         {categorylist.map((list, index) => (
           <option key={index} value={list}>{list}</option>
         ))}
-      </select>
+      </select>    
     </div>
   )
 }
