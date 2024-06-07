@@ -1,3 +1,7 @@
 .categorylist{
-margin-left: 24rem;
+margin-left: 16rem;
+    text-align: left;
+}
+.category>label{
+    font: bold;
 }

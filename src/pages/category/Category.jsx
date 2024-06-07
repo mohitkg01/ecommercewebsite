@@ -4,6 +4,7 @@ import '../../styles/Category.css';
 
 const Category = () => {
   const [categorylist, setCategoryList] = useState([]);
+  const [selecttype,setSelectedtype]=useState();
   const navigate=useNavigate();
 
   useEffect(() => {
@@ -20,13 +21,23 @@ const Category = () => {
   },[])
   
   const movetocategorygDetails=(cat)=>{
-    navigate(`categorydetails/${cat}`)
+    setSelectedtype(cat);
+    if(cat){
+      navigate(`categorydetails/${cat}`)
+    }
+    
   }
   return (
-    <div id='category'  className='categorylist'>
-      {categorylist.map((list) => (
-        <button onClick={() =>movetocategorygDetails(list)}>{list}</button>
-      ))}
+    <div id='category' className='categorylist'>
+      <label >Choose a category:</label>
+      <select value={selecttype}
+        onChange={(e) => movetocategorygDetails(e.target.value)}
+      >
+        <option value="" disabled>Select a category</option>
+        {categorylist.map((list, index) => (
+          <option key={index} value={list}>{list}</option>
+        ))}
+      </select>
     </div>
   )
 }
