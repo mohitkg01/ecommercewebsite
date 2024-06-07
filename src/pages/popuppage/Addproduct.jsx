@@ -137,17 +137,17 @@ useEffect(()=>{
                     </div>
                     <div className='discount'>
                         <label htmlFor="">Discount Percentage</label>
-                        <Field type="number" name="" />
+                            <Field type="number" name="discount" />
                         <ErrorMessage name="discount" component="div" />
                     </div>
                     <div className='stock'>
                         <label htmlFor="">Stock</label>
-                        <Field type="number" name="" />
+                            <Field type="number" name="stock" />
                         <ErrorMessage name="stock" component="div" />
                     </div>
                     <div className='rating'>
                         <label htmlFor="">Rating</label>
-                        <Field type="number" name="" />
+                            <Field type="number" name="rating" />
                         <ErrorMessage name="rating" component="div" />
                     </div>
                 {/*

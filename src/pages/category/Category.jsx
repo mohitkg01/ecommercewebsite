@@ -3,17 +3,22 @@ import {useNavigate } from 'react-router-dom';
 import '../../styles/Category.css';
 
 const Category = () => {
-  const [categorylist, setCategorylist] = useState([]);
+  const [categorylist, setCategoryList] = useState([]);
   const navigate=useNavigate();
 
   useEffect(() => {
-    fetch('https://dummyjson.com/products/category-list')
-      .then(res => res.json())
-      .then(data => {
-        // console.log(data);
-        setCategorylist(data);
-      });
-  })
+    const fetchCategories = async () => {
+      try{
+        const response = await fetch('https://dummyjson.com/products/category-list')
+        const data = await response.json();
+        setCategoryList(data);
+      }catch(err){
+        console.error('Error fetching the category list:', err);
+      }
+    }
+    fetchCategories();
+  },[])
+  
   const movetocategorygDetails=(cat)=>{
     navigate(`categorydetails/${cat}`)
   }

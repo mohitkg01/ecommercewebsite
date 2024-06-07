@@ -21,9 +21,7 @@ import Addproduct from '../pages/popuppage/Addproduct.jsx';
 import Search from '../pages/search/Search.jsx';
 import Category from '../pages/category/Category.jsx';
 import Categorydetails from '../pages/category/Categorydetails.jsx';
-// import { Page } from '../pages/Page.jsx';
 import { ToastContainer } from 'react-toastify';
-// import Loginfor from '../pages/Loginfor.jsx';
 import 'react-toastify/dist/ReactToastify.css';
 import PhoneNumber from '../pages/login/PhoneNumber.jsx';
 import Otppage from '../pages/login/Otppage.jsx';
@@ -59,15 +57,11 @@ const Router = () => {
             <Route path='/product/searchproduct' element={<Search />} />
             <Route path='category' element={<Category />} />
             <Route path='/category/categorydetails/:type' element={<Categorydetails />} />
-            <Route path='/product/addproduct/:id' element={<Addproduct/>}/>
-            
-            {/* <Route path='page' element={<Page/>}/> */}
-            {/* <Route path='login' element={<Loginfor/>}/> */}
-
+            <Route path='/addproduct/:id' element={<Addproduct/>}/>
           </Route>
         </Routes>
       </BrowserRouter>
-      <ToastContainer/>
+      <ToastContainer autoClose={2000} />
     </div>
   )
 }

@@ -36,3 +36,13 @@
     transform: rotate(360deg);
   }
 }
+.Toastify__close-button {
+  color: rgb(16, 2, 2) !important;
+  opacity: 1 !important;
+
+  font-size: 18px;
+  /* Custom font size */
+  cursor: pointer;
+  width: 1rem;
+  margin-left: 10px;
+}

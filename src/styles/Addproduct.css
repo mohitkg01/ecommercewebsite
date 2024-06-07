@@ -51,17 +51,11 @@ position: relative;
     left: 51%;
     top: -27px;
 }
-/* .preview {
-    width: 100px;
-    height: 100px;
-    object-fit: cover;
-    margin: 10px 0;
-} */
 .imagepreview{
+        margin-top: 22px;
         position: absolute;
         right: 34%;
-        top: 42rem;
-        margin-top: 22px;
+        top: 38rem;
 }
 .closeimage{
         position: absolute;

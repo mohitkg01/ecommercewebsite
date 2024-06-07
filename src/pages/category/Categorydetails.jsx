@@ -9,20 +9,28 @@ const Categorydetails = () => {
     const [newList,setnewList]=useState([]);
 
     useEffect(()=>{
-        fetch(`https://dummyjson.com/products/category/${type}`)
-            .then(res => res.json())
-            .then((data)=>{
-                setnewList(data.products);
-            });
-    })
+    const fetchProducts=async ()=>{
+        try{
+        const response=await fetch(`https://dummyjson.com/products/category/${type}`)
+        const data = await response.json();
+        setnewList(data.products);
+        }
+        catch(err){
+            console.log("Error in fetching :",err);
+        };
+    }
+        fetchProducts();
+    },[type]);
+
+
     const handleDelete = (deletedItemId) => {
         setnewList(newList.filter(item => item.id !== deletedItemId));
     };
   return (
       <div id='categorydetails' className='product'>
-        {newList.map((item,id)=>{
+        {newList.map((item)=>{
             return(
-                <div key={id}>
+                <div key={item.id}>
                     <Cards data={item} />
                     <Deleteproduct data={item} onDelete={handleDelete} />
                     <Editproduct data={item} />

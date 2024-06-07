@@ -1,13 +1,14 @@
 import React from 'react'
 import { confirmAlert } from 'react-confirm-alert';
 import { MdDelete } from "react-icons/md";
-import toast, { Toaster } from 'react-hot-toast';
+// import toast, { Toaster } from 'react-hot-toast';
+import { toast } from 'react-toastify';
 
 const Deleteproduct = ({ data, onDelete }) => {
   // const [newlist,setnewlist]=useState([]);
 // console.log(data);
 // console.log(onDelete);
-  const notify= () => toast.success('Item deleted');
+  // const notify= () => toast.success('Item deleted');
   const deleteItem = async () => {
     confirmAlert({
       title: 'Confirm to submit',
@@ -22,14 +23,18 @@ const Deleteproduct = ({ data, onDelete }) => {
             .then(res => res.json())
             .then(()=>{
               onDelete(data.id);
-              notify();
-
+              // notify()
+              toast.success("Deleted",{
+                position: "top-center"
+              })
             })
           }
         },
         {
           label: 'No',
-          onClick: () =>toast.error("Delete cancel")
+          onClick: () => toast.info("Deleted Cancel", {
+            position: "top-center"
+          })
         }
       ]
     });
@@ -38,7 +43,7 @@ const Deleteproduct = ({ data, onDelete }) => {
   return (
     <>
       <span className='btnspan'> <MdDelete onClick={deleteItem} /></span>
-      <Toaster /></>
+      </>
       
   )
 }

@@ -1,11 +1,11 @@
 .sidebar {
-    background-color: aliceblue;
-    gap: 20px;
+  background-color: aliceblue;
+    gap: 12px;
     position: absolute;
-    /* margin: 40px 0 0 70px; */
+    margin: 9px 0 0 -21px;
     display: grid;
     text-align: justify;
-    padding: 65px;
+    padding: 20px
     }
 .sidebar div{
     padding: 10px;

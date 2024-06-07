@@ -2,8 +2,6 @@ import React, { useState } from 'react'
 import '../../styles/Login.css'
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import { useNavigate } from "react-router-dom";
-// import { useForm } from "react-hook-form";
-// import { yupResolver } from "@hookform/resolvers/yup";
 import * as Yup from "yup";
 import { useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
@@ -11,11 +9,6 @@ import SideImage from './SideImage';
 import { login_user } from './reduxContainer/Action';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 
-
-// const schema = yup.object().shape({
-//   username: yup.string().default('emilys').required("corret your username to emilys"),
-//   password: yup.string().min(8).max(32).required("password must be at least 8 characters"),
-// });
 const validationSchema = Yup.object({
   username: Yup.string()
     // .email('Invalid email address')
@@ -33,16 +26,8 @@ const Login = () => {
   const navigate = useNavigate();
   const dispatch=useDispatch();
   
-
-
-
-  
-  // const { register, handleSubmit, formState: { errors } } = useForm({
-  //   resolver: yupResolver(schema),
-  // });
-
   const onSubmitHandler = async (values) => {
-    console.log(values);
+    // console.log(values);
     const res = await fetch('https://dummyjson.com/auth/login', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -123,17 +108,6 @@ const Login = () => {
       <div className="page">
         <SideImage/>
         <div className="input">
-          {/* <form action="">
-            <div className='email'>
-                <label htmlFor="" >Enter your email id </label> <br />
-                <input class='in' type="text" placeholder='Ex:mohit@gmail.com'  value={emailIn} onChange={(e)=> setEmail(e.target.value)}/>
-            </div>
-            <div className='password'>
-                <label htmlFor="">Enter your password</label> <br />
-                <input className='in' type={type} placeholder='****************' value={passwordIn} onChange={(e)=> setPassword(e.target.value)}  />
-                <span className='pass' onClick={passwordVisible}>{showPassword ? <FaEyeSlash /> : <FaEye />}  </span>
-            </div> 
-    </form > */}
               <Form>
               <h1>Lets Log in you in.</h1>
             <div className='email'>
