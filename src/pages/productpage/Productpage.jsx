@@ -8,9 +8,12 @@ import '../../styles/Productpage.css'
 import Search from '../search/Search';
 import Deleteproduct from '../delete/Deleteproduct';
 import Editproduct from '../edit/Editproduct';
-import Loaderanimation from '../animation/Loaderanimation';
+import Loaderanimation from '../../HOC/Loaderanimation';
+import withLoader from '../../HOC/Loader/withLoader';
 
-const Productpage = (props) => {
+
+const Productpage = ({ isLoading, setLoading }) => {
+  // console.log(props);
   const [items, setItems] = useState([]);
   const [currpage,setCurrpage]=useState(1);
   const [totalItems, setTotalItems] = useState(0);
@@ -29,12 +32,25 @@ const itemsPerPage=9;
   };
  
   useEffect(() => {
-    fetch(`https://dummyjson.com/products?limit=${itemsPerPage}&skip=${(currpage - 1) * itemsPerPage}`)
-      .then(res => res.json())
-      .then(data =>{ setItems(data.products)
+
+    const fetchData=async()=>{
+      setLoading(true);
+      try {
+        const res=await fetch(`https://dummyjson.com/products?limit=${itemsPerPage}&skip=${(currpage - 1) * itemsPerPage}`)
+        const data = await res.json();  
+        setItems(data.products);
         setTotalItems(data.total);
-      })
-  }, [currpage]);
+        setLoading(false);
+      }
+      catch (err) {
+        console.log(err);
+        setLoading(false);
+      }
+    };
+      fetchData();
+  }, [currpage, setLoading]);
+
+    
   // console.log(items);
 
   //fetching data
@@ -59,18 +75,21 @@ const itemsPerPage=9;
       <div className="search">
         <Search/>
       </div>
+     
     <div className='product'>
-     {items.length > 0 ? (
+     {/* {items.length > 0 ? ( */}
+        {isLoading ? <Loaderanimation /> :
           items.map((item) => (
             <div key={item.id}>
               <Cards data={item} />
               <Deleteproduct data={item} onDelete={handleDelete} />
               <Editproduct data={item} />
             </div>
-          ))
-        ) : (
+          ))}
+
+        {/* ) : (
           <Loaderanimation />
-        )}
+        )} */}
      </div>
      <div >
       <Pagination
@@ -85,4 +104,4 @@ const itemsPerPage=9;
   )
 }
 
-export default Productpage
+export default withLoader(Productpage);

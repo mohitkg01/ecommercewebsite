@@ -1,34 +1,35 @@
 import React, { useEffect, useState } from 'react'
-import {useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import '../../styles/Category.css';
+// import Categorydetails from './Categorydetails';
 
 const Category = () => {
   const [categorylist, setCategoryList] = useState([]);
-  const [selecttype,setSelectedtype]=useState('');
-  const navigate=useNavigate();
+  const [selecttype, setSelectedtype] = useState('');
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchCategories = async () => {
-      try{
+      try {
         const response = await fetch('https://dummyjson.com/products/category-list')
         const data = await response.json();
         setCategoryList(data);
-      }catch(err){
+      } catch (err) {
         console.error('Error fetching the category list:', err);
       }
     }
     fetchCategories();
-  },[])
-  
-  const movetocategorygDetails=(cat)=>{
+  }, [])
+
+  const movetocategorygDetails = (cat) => {
     setSelectedtype(cat);
-    if(cat){
-      navigate(`categorydetails/${cat}`)
+    if (cat) {
+      navigate(`/category/${cat}`)
     }
-    
   }
   return (
-    <div id='category' className='categorylist'>
+    <div id='categoryn' className='categorylist'>
+
       <label >Choose a category:</label>
       <select value={selecttype}
         onChange={(e) => movetocategorygDetails(e.target.value)}
@@ -37,7 +38,7 @@ const Category = () => {
         {categorylist.map((list, index) => (
           <option key={index} value={list}>{list}</option>
         ))}
-      </select>    
+      </select>
     </div>
   )
 }

@@ -19,7 +19,7 @@ import Productpage from '../pages/productpage/Productpage.jsx';
 import Productdetail from '../pages/detailsproduct/Productdetail.jsx';
 import Addproduct from '../pages/popuppage/Addproduct.jsx';
 import Search from '../pages/search/Search.jsx';
-import Category from '../pages/category/Category.jsx';
+// import Category from '../pages/category/Category.jsx';
 import Categorydetails from '../pages/category/Categorydetails.jsx';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -55,8 +55,8 @@ const Router = () => {
             <Route path='/product/productdetails/:id' element={<Productdetail />} />
             <Route path='/product/addproduct' element={<Addproduct />} />
             <Route path='/product/searchproduct' element={<Search />} />
-            <Route path='category' element={<Category />} />
-            <Route path='/category/categorydetails/:type' element={<Categorydetails />} />
+            <Route path='category' element={<Categorydetails />} />
+            <Route path='/category/:type' element={<Categorydetails />} />
             <Route path='/addproduct/:id' element={<Addproduct/>}/>
           </Route>
         </Routes>

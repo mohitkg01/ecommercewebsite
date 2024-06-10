@@ -8,6 +8,7 @@ import { toast } from 'react-toastify';
 import SideImage from './SideImage';
 import { login_user } from './reduxContainer/Action';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
+// import IsLoadingHoc from '../../HOC/Loader/IsLoadingHoc';
 
 const validationSchema = Yup.object({
   username: Yup.string()
@@ -27,37 +28,42 @@ const Login = () => {
   const dispatch=useDispatch();
   
   const onSubmitHandler = async (values) => {
-    // console.log(values);
-    const res = await fetch('https://dummyjson.com/auth/login', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
+   try{
+     const res = await fetch('https://dummyjson.com/auth/login', {
+       method: 'POST',
+       headers: { 'Content-Type': 'application/json' },
+       body: JSON.stringify({
 
-        username: 'emilys',
-        password: 'emilyspass',
-        expiresInMins: 30, // optional, defaults to 60
-      })
-    })
-      .then(res => res.json())
-    if (res.username === values.username) {
-      const token = res.token;
-      const username = res.username;
+         username: 'emilys',
+         password: 'emilyspass',
+         expiresInMins: 30, // optional, defaults to 60
+       })
+     })
+      //  .then(res => res.json())
+    const data =await res.json();
+     if (data.username === values.username) {
+      //  const token = res.token;
+      //  const username = res.username;
+      const {token,username}=data;
+       // Dispatch login action
+       dispatch(login_user(token, username));
 
-      // Dispatch login action
-      dispatch(login_user(token, username));
+       // localStorage.setItem("token", JSON.stringify(res.token));
+       toast.success("Login Successful", {
+         position: "top-center"
+       })
+       navigate("/home");
 
-      // localStorage.setItem("token", JSON.stringify(res.token));
-      toast.success("Login Successful", {
-        position: "top-center"
-      })
-    navigate("/home");
-
-    }
-    else {
-      toast.error("Invalid Details", {
-        position: "top-center"
-      })
-    }
+     }
+     else {
+       toast.error("Invalid Details", {
+         position: "top-center"
+       })
+     }
+   } 
+   catch(err){
+    console.log(err);
+   }
   }
 
 
