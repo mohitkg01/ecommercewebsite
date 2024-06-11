@@ -1,9 +1,9 @@
 import { Provider } from 'react-redux';
 import './App.css';
 import Router from './router/Router';
-import {Store ,persistor } from './reduxContainer/Store';
 import { PersistGate } from 'redux-persist/integration/react';
-// import store from './store/store';
+import { Store, persistor } from './reduxContainer/store/Store';
+
 
 function App() {
   return (

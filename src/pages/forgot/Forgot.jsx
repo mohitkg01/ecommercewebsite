@@ -1,6 +1,6 @@
 import React from 'react'
 import { useState } from 'react';
-import SideImage from '../login/SideImage';
+import SideImage from '../../layout/SideImage';
 const Forgot = () => {
   const [emailIn,setEmail]=useState("");
   const passwordHandlers=()=>{

@@ -2,14 +2,14 @@ import { signInWithPhoneNumber } from 'firebase/auth';
 import React, { useState } from 'react'
 import { toast } from 'react-toastify';
 import { RecaptchaVerifier } from "firebase/auth";
-import { auth } from './Firebase';
+import { auth } from '../../../firebase/Firebase';
 import PhoneInput from 'react-phone-input-2'
 import 'react-phone-input-2/lib/style.css'
 
 // import { useNavigate } from 'react-router-dom';
 // import img from '../../assets/img.jpg'
 import Otppage from './Otppage';
-import SideImage from './SideImage';
+import SideImage from '../../../layout/SideImage';
 
 const PhoneNumber = () => {
 
@@ -46,19 +46,19 @@ const PhoneNumber = () => {
             {!showOtpPage ? (
                 <div>
                     <div className="page">
-                    <SideImage/>
-          <div className="input">
-                        <h1>Login using mobile no</h1>
-                        <PhoneInput
-                            country={'in'}
-                            value={phonenumber}
-                            onChange={(phonenumber) => setPhonenumber('+' + phonenumber)}
-                        />
-                        <button onClick={sendOtp} variant='contained'>send otp</button>
-                        <div id="recaptcha"></div>
-                        <br />
+                        <SideImage />
+                        <div className="input">
+                            <h1>Login using mobile no</h1>
+                            <PhoneInput
+                                country={'in'}
+                                value={phonenumber}
+                                onChange={(phonenumber) => setPhonenumber('+' + phonenumber)}
+                            />
+                            <button onClick={sendOtp} variant='contained'>send otp</button>
+                            <div id="recaptcha"></div>
+                            <br />
+                        </div>
                     </div>
-                </div>
                 </div>
             ) : (
                 <Otppage user={user} phone={phonenumber} />)}

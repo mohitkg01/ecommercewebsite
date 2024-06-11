@@ -23,8 +23,8 @@ import Search from '../pages/search/Search.jsx';
 import Categorydetails from '../pages/category/Categorydetails.jsx';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import PhoneNumber from '../pages/login/PhoneNumber.jsx';
-import Otppage from '../pages/login/Otppage.jsx';
+import PhoneNumber from '../pages/login/otplogin/PhoneNumber.jsx';
+import Otppage from '../pages/login/otplogin/Otppage.jsx';
 
 const Router = () => {
   return (

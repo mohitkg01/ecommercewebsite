@@ -1,4 +1,4 @@
-import { loginUser,logoutUser } from "./ActionType"
+import { loginUser,logoutUser } from "./../action/ActionType"
 
 const initialState={
     token: null,

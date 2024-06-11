@@ -9,7 +9,7 @@ import { MdNotificationsActive,MdTipsAndUpdates,MdCalendarViewDay  } from "react
 import { FaPeopleGroup } from "react-icons/fa6";
 import { useNavigate,useMatch} from "react-router-dom";
 import { useDispatch} from 'react-redux';
-import { logout_user } from '../reduxContainer/Action';
+import { logout_user } from '../reduxContainer/action/Action';
 import { PiDotsThreeVerticalBold } from "react-icons/pi";
 import { IoIosLogOut } from "react-icons/io";
 
