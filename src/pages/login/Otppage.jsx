@@ -4,7 +4,7 @@ import { TextField } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import SideImage from './SideImage';
 import { useDispatch } from 'react-redux';
-import { login_user } from './reduxContainer/Action';
+import { login_user } from '../../reduxContainer/Action';
 // import { login } from '../../store/userSlice';
 const Otppage = ({user,phone}) => {
     // console.log(user);
@@ -42,7 +42,7 @@ const Otppage = ({user,phone}) => {
                 // Dispatch login action
             dispatch(login_user(token, username));
 
-            localStorage.setItem("token", JSON.stringify(res.token));
+            // localStorage.setItem("token", JSON.stringify(res.token));
             toast.success("Login Successful", {
                     position: "top-center"
                 })

@@ -6,9 +6,8 @@ import * as Yup from "yup";
 import { useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
 import SideImage from './SideImage';
-import { login_user } from './reduxContainer/Action';
+import { login_user } from '../../reduxContainer/Action';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
-// import IsLoadingHoc from '../../HOC/Loader/IsLoadingHoc';
 
 const validationSchema = Yup.object({
   username: Yup.string()
@@ -36,7 +35,7 @@ const Login = () => {
 
          username: 'emilys',
          password: 'emilyspass',
-         expiresInMins: 30, // optional, defaults to 60
+         expiresInMins: 30, 
        })
      })
       //  .then(res => res.json())
@@ -48,7 +47,7 @@ const Login = () => {
        // Dispatch login action
        dispatch(login_user(token, username));
 
-       // localStorage.setItem("token", JSON.stringify(res.token));
+      //  localStorage.setItem("token", JSON.stringify(data.token));
        toast.success("Login Successful", {
          position: "top-center"
        })
