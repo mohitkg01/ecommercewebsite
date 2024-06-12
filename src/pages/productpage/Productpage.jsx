@@ -95,7 +95,7 @@ const itemsPerPage=9;
       <Pagination
         activePage={currpage}
         itemsCountPerPage={itemsPerPage}
-        totalItemsCount={200}
+        totalItemsCount={totalItems}
         pageRangeDisplayed={10}
         onChange={handlePageChange}
       />

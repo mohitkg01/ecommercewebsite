@@ -1,0 +1,116 @@
+.numbr{
+        position: absolute;
+            top: 9px;
+            color: #f11e1e;
+}
+#cartItem {
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    max-width: 800px;
+    margin: auto;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        margin-top: 14px;
+}
+
+.cartitem {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.ci-card {
+display: flex;
+    flex-direction: row;
+    /* width: 84%; */
+    /* border: none; */
+    background: #ffffff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+    margin-left: 8rem;
+    height: 12rem;
+    width: 32rem;
+}
+
+.ci-image {
+    /* width: 150px; */
+    height: auto;
+    object-fit: cover;
+}
+
+.ci-title {
+font-size: 15px;
+    font-weight: bold;
+}
+
+.ci-card .card-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 20px;
+}
+
+.price,
+.total {
+    display: block;
+    font-size: 16px;
+    /* margin-bottom: 10px; */
+}
+
+.quantity-control {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.quantity-control span {
+    cursor: pointer;
+    padding: 5px;
+    margin: 0 5px;
+    font-size: 20px;
+    color: #555;
+}
+
+.quantity-control .quantity {
+    font-size: 16px;
+    /* margin: 0 10px; */
+}
+
+.ci-btn{
+/* background-color: #007bff; */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: auto;
+    margin-top: -8px;
+    margin-left: 12px;
+}
+.ci-btn:hover {
+    background-color: #e47667;
+}
+
+/* #cartItem>butt {
+    margin-top: 20px;
+} */
+
+#cartItem>span {
+    display: block;
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 20px;
+    text-align: right;
+}
+.ci2btn{
+    padding: 10px;
+}
+.ci-close{
+        position: absolute;
+        right: 22%;
+        top: 8%;
+    cursor: pointer;
+    font-size: 34px;
+}

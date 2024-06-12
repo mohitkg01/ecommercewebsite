@@ -39,6 +39,7 @@
     "react-toastify": "^10.0.5",
     "redux": "^5.0.1",
     "redux-persist": "^6.0.0",
+    "semantic-ui-react": "^2.1.5",
     "textfield": "^1.0.4",
     "web-vitals": "^2.1.4",
     "yup": "^1.4.0"

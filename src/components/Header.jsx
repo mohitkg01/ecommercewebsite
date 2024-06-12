@@ -1,9 +1,11 @@
 import React from 'react'
 import '../styles/Header.css'
 import { useSelector } from 'react-redux';
-import { TfiHeadphoneAlt } from "react-icons/tfi";
+// import { TfiHeadphoneAlt } from "react-icons/tfi";
+
 // import { BsLayoutTextSidebar } from "react-icons/bs";
 import Sidebar from './Sidebar';
+import Cartpage from '../pages/cart/Cartpage';
 const Header = () => {
   // const [isOpen,setisOpen]=useState(false);
   // const [openlist,setlist]=useState(true);
@@ -26,7 +28,7 @@ const Header = () => {
         
       </span>
       <span className='right'>
-        <span className='call'><TfiHeadphoneAlt /></span>
+        <span className='call'><Cartpage/></span>
         <span className='user'>{user}</span>
       </span>
     </div>

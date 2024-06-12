@@ -25,6 +25,7 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import PhoneNumber from '../pages/login/otplogin/PhoneNumber.jsx';
 import Otppage from '../pages/login/otplogin/Otppage.jsx';
+import CartItem from '../pages/cart/CartItem.jsx';
 
 const Router = () => {
   return (
@@ -58,6 +59,7 @@ const Router = () => {
             <Route path='category' element={<Categorydetails />} />
             <Route path='/category/:type' element={<Categorydetails />} />
             <Route path='/addproduct/:id' element={<Addproduct/>}/>
+            <Route path='/cartItem' element={<CartItem/>}/>
           </Route>
         </Routes>
       </BrowserRouter>
