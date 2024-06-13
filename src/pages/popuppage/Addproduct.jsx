@@ -128,7 +128,7 @@ useEffect(()=>{
                     <div className='title'>
                         <label htmlFor="name">Product Title</label>
                         <Field type="text" name="name" />
-                        <ErrorMessage name="name" component="div" />
+                        <ErrorMessage name="name" component="div"  style={{color:'red'}}/>
                     </div>
                     <div className='price'>
                     <label htmlFor="price">Price</label>

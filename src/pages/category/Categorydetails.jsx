@@ -6,11 +6,13 @@ import Editproduct from '../edit/Editproduct';
 import Category from './Category';
 import withLoader from '../../HOC/Loader/withLoader';
 import Loaderanimation from '../../HOC/Loaderanimation';
+import { useSelector } from 'react-redux';
 
 
 const Categorydetails = ({ isLoading, setLoading }) => {
     const {type}=useParams();
     const [newList,setnewList]=useState([]);
+    const isOpen=useSelector(state=>state.isOpenSide);
 
     useEffect(()=>{
     const fetchProducts=async ()=>{
@@ -34,7 +36,7 @@ const Categorydetails = ({ isLoading, setLoading }) => {
         setnewList(newList.filter(item => item.id !== deletedItemId));
     };
   return (
-      <div id='category' className='product'>
+      <div id='category' className='product' style={{ marginLeft: isOpen ? '' : '150px' }}>
           <div className='cate'><Category /></div>
 
           <div className='cadet'>

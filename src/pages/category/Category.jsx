@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import '../../styles/Category.css';
+// import { useSelector } from 'react-redux';
 // import Categorydetails from './Categorydetails';
 
 const Category = () => {
   const [categorylist, setCategoryList] = useState([]);
   const [selecttype, setSelectedtype] = useState('');
   const navigate = useNavigate();
+  // const isOpen=useSelector(state=>state.isOpenSide)
 
   useEffect(() => {
     const fetchCategories = async () => {

@@ -7,6 +7,7 @@ import Button from 'react-bootstrap/Button';
 import { clearCartAction, decrease_Quantity, increase_Quantity, removeItemAction } from '../../reduxContainer/action/Action';
 import { IoIosClose } from "react-icons/io";
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 const CartItem = () => {
     const cartItems = useSelector((state) => state.cartItems);
@@ -24,12 +25,22 @@ const handleIncreaseQuantity=(itemId)=>{
 }
 const handleRemove = (itemId) => {
         dispatch(removeItemAction(itemId));
+    toast.success('Item Removed', {
+        position: "top-center"
+    })
     };
  const handleClear = () => {
         dispatch(clearCartAction());
+     toast.success('Cleared All Cart Item', {
+         position: "top-center"
+     })
     };
     const closehandler = () => navigate('/product');
     const subtotal = cartItems.reduce((total, item) => total + (item.price * item.quantity), 0);
+
+   const handleBuy=()=>{
+    navigate('/cartItem/addresspage')
+   }
   return (
       <div id='cartItem'>
           <span className='ci-close'><IoIosClose onClick={closehandler} /></span>
@@ -61,7 +72,7 @@ const handleRemove = (itemId) => {
               ))}
               <span className='ci2btn'>
                   <button className='ci-btn'  onClick={handleClear}>ClearCart</button>
-                  <button className='ci-btn'> Buy Now</button>
+                  <button className='ci-btn' onClick={handleBuy}> Buy Now</button>
                   </span>
                   <span>Sub Total: ${subtotal.toFixed(2)}</span>
               </>

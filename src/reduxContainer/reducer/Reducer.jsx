@@ -1,10 +1,18 @@
-import { addtocart, decreaseQuantity, increaseQuantity, loginUser, logoutUser, removeItem, clearCart } from "./../action/ActionType"
+import { addtocart, decreaseQuantity, increaseQuantity, loginUser, logoutUser, removeItem, clearCart, SiderBarOpen, addressData } from "./../action/ActionType"
 
 const initialState={
     token: null,
     loggedIn: false,
     user: "",
     cartItems:[],
+    isOpenSide:false,
+    address:{
+        name: '',
+        address: '',
+        city: '',
+        state: '',
+        zip: '',
+    },
 }
 const Reducer = (state = initialState, action) => {
     switch (action.type) {
@@ -71,6 +79,16 @@ const Reducer = (state = initialState, action) => {
                 ...state,
                 cartItems: [],
             };
+        case SiderBarOpen:
+            return{
+                ...state,
+                isOpenSide: !state.isOpenSide,
+            }
+        case addressData:
+            return{
+                ...state,
+                address: action.payload
+            }
         default:
             return state;
     }

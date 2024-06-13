@@ -1,4 +1,4 @@
-import { decreaseQuantity } from "./ActionType";
+import { SiderBarOpen, addressData, decreaseQuantity } from "./ActionType";
 import { removeItem } from "./ActionType";
 import { clearCart } from "./ActionType";
 import { increaseQuantity } from "./ActionType";
@@ -47,3 +47,15 @@ export const removeItemAction = (itemId) => {
         payload: itemId
     };
 };
+export const  sideBarOpen=(data)=>{
+    return{
+        type:SiderBarOpen,
+        payload:data
+    }
+}
+export const address_Data=(data)=>{
+    return{
+        type:addressData,
+        payload:data
+    }
+}

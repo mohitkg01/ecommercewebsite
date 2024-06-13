@@ -10,14 +10,17 @@ import Deleteproduct from '../delete/Deleteproduct';
 import Editproduct from '../edit/Editproduct';
 import Loaderanimation from '../../HOC/Loaderanimation';
 import withLoader from '../../HOC/Loader/withLoader';
+import { useSelector } from 'react-redux';
+// import { MdWidthFull } from 'react-icons/md';
 
 
-const Productpage = ({ isLoading, setLoading }) => {
-  // console.log(props);
+const Productpage = ({ isLoading, setLoading}) => {
+  
   const [items, setItems] = useState([]);
   const [currpage,setCurrpage]=useState(1);
   const [totalItems, setTotalItems] = useState(0);
-  
+  const isOpen=useSelector(state=>state.isOpenSide);
+  // console.log(isOpen);
 
   // const [isOpen, setIsOpen] = useState(false);
   const navigate=useNavigate();
@@ -76,7 +79,7 @@ const itemsPerPage=9;
         <Search/>
       </div>
      
-    <div className='product'>
+      <div className='product' style={{ marginLeft: isOpen ? '' : '150px' }}>
      {/* {items.length > 0 ? ( */}
         {isLoading ? <Loaderanimation /> :
           items.map((item) => (

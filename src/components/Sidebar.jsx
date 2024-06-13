@@ -1,24 +1,24 @@
-import React, { useState } from 'react'
+import React from 'react'
 import '../styles/Sidebar.css'
-import { IoFootballOutline,IoPeopleSharp  } from "react-icons/io5";
-import { BsCalendar2EventFill } from "react-icons/bs";
+import { AiFillProduct } from "react-icons/ai";
+import {IoPeopleSharp  } from "react-icons/io5";
+import { IoIosContacts } from "react-icons/io";
 import { BiSolidDashboard,BiSolidUser } from "react-icons/bi";
 import { GiFireShrine } from "react-icons/gi";
 import { RiWirelessChargingLine} from "react-icons/ri";
-import { MdNotificationsActive,MdTipsAndUpdates,MdCalendarViewDay  } from "react-icons/md";
-import { FaPeopleGroup } from "react-icons/fa6";
+import { MdNotificationsActive, MdTipsAndUpdates, MdCalendarViewDay, MdCategory } from "react-icons/md";
 import { useNavigate,useMatch} from "react-router-dom";
-import { useDispatch} from 'react-redux';
-import { logout_user } from '../reduxContainer/action/Action';
+import { useDispatch,useSelector} from 'react-redux';
+import { logout_user, sideBarOpen } from '../reduxContainer/action/Action';
 import { PiDotsThreeVerticalBold } from "react-icons/pi";
 import { IoIosLogOut } from "react-icons/io";
-
 
 
 const Sidebar = () => {
   // console.log(props);
   const navigate = useNavigate();
-  const [isOpen, setisOpen] = useState(false);
+  // const [isOpen, setisOpen] = useState(false);
+  const isOpen=useSelector(state=>state.isOpenSide)
 //using use match
  const product=useMatch('/product')
   const category=useMatch('/category');
@@ -40,9 +40,13 @@ const dispatch=useDispatch();
   //   navigate('/game');
   // }
   const handleSidebar = () => {
-    setisOpen((prev) => !prev);
+    // setisOpen((prev) => !prev);
+    dispatch(sideBarOpen())
+    // <Productpage isOpen={isOpen}/>
     // setlist(false);
   }
+
+
   // const handleProduct=()=>{
   //   navigate('/product');
   // }
@@ -82,23 +86,23 @@ const dispatch=useDispatch();
     dispatch(logout_user);
   }
   const menuItems = [
-    { onClick: () => navigate('/product'), match: product || productDetails || addProduct, icon: <IoFootballOutline />, text: 'Products' },
-    { onClick: () => navigate('/category'), match: category || categoryDetails, icon: <BsCalendar2EventFill />, text: 'Category' },
+    { onClick: () => navigate('/product'), match: product || productDetails || addProduct, icon: <AiFillProduct/>, text: 'Products' },
+    { onClick: () => navigate('/category'), match: category || categoryDetails, icon: <MdCategory/>, text: 'Category' },
+    { onClick: () => navigate('/view'), match: view, icon: <MdCalendarViewDay />, text: 'View & Export Report' },
     { onClick: () => navigate('/dash'), match: dash, icon: <BiSolidDashboard />, text: 'Dashboard Management' },
     { onClick: () => navigate('/refree'), match: refree, icon: <GiFireShrine />, text: 'Refree Management' },
     { onClick: () => navigate('/users'), match: users, icon: <BiSolidUser />, text: 'User Management' },
     { onClick: () => navigate('/live'), match: live, icon: <RiWirelessChargingLine />, text: 'Live Casting' },
-    { onClick: () => navigate('/notification'), match: notification, icon: <MdNotificationsActive />, text: 'Notification' },
-    { onClick: () => navigate('/view'), match: view, icon: <MdCalendarViewDay />, text: 'View & Export Report' },
+    { onClick: () => navigate('/notification'), match: notification, icon: <MdNotificationsActive />, text: 'Notification' },  
     { onClick: () => navigate('/team'), match: team, icon: <IoPeopleSharp />, text: 'Teams Created by User' },
     { onClick: () => navigate('/update'), match: update, icon: <MdTipsAndUpdates />, text: 'Games update' },
-    { onClick: () => navigate('/player'), match: player, icon: <FaPeopleGroup />, text: 'Player' },
+    { onClick: () => navigate('/player'), match: player, icon: <IoIosContacts/>, text: 'Contacts' },
   ];
 
   return (
     <>
-      <div className='dot' style={{ left: !isOpen ? "13%" : "" }}><PiDotsThreeVerticalBold onClick={handleSidebar}/></div>
-    <div className="sidebar" style={{width:isOpen?"220px":"20px"}} > 
+      <div className='dot' style={{ left: !isOpen ? "22%" : "" }}><PiDotsThreeVerticalBold onClick={handleSidebar}/></div>
+    <div className="sidebar" style={{width:isOpen?"220px":"40px"}} > 
       {menuItems.map((item,idx)=>(
         <div key={idx} onClick={item.onClick} className={item.match?'active':""}>
           {item.icon}{isOpen&&<span>{item.text}</span>}

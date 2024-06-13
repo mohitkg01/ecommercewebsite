@@ -1,0 +1,52 @@
+/* styles.css */
+#addresspage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    background-color: #f9f9f9;
+    font-family: Arial, sans-serif;
+}
+
+#addresspage form {
+    background-color: #b9b1b1;
+        padding: 50px;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgb(227 206 206 / 10%);
+        width: 100%;
+        max-width: 313px;
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+}
+
+#addresspage label {
+    font-size: 14px;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+}
+
+#addresspage input[type="text"] {
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+    width: 100%;
+}
+
+/* button {
+    padding: 10px 15px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button:hover {
+    background-color: #0056b3;
+} */

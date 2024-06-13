@@ -34,11 +34,12 @@
     margin-left: 10rem;
 }
 .call{
-        background: #7e737338;
+        /* background: #7e737338; */
         border-radius: 14px;
         font-size: 23px;
         padding: 6px;
         margin-right: 10px;
+        cursor: pointer;
 }
 .user{
     background: #7e737338;

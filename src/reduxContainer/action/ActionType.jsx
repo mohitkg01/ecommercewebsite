@@ -5,3 +5,5 @@ export const increaseQuantity = 'INCREASE_QUANTITY';
 export const decreaseQuantity = 'DECREASE_QUANTITY';
 export const removeItem="REMOVE_ITEM";
 export const clearCart="CLEAR_ITEM";
+export const SiderBarOpen="SIDE_BAR_OPEN";
+export const addressData="ADDRESS_DATA";
