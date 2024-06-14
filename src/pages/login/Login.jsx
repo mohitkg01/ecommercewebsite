@@ -118,14 +118,14 @@ const Login = () => {
                 <div className='email'>
                   <label htmlFor="" >Enter your email id </label><br />
                   <Field className='in' type="text" name="username" />
-                  <ErrorMessage name="username" component="div" />
+                  <ErrorMessage name="username" component="div" style={{ color: 'red' }} />
                 </div>
                 <div className='password'>
                   <label htmlFor="">Enter your password</label><br />
                   <Field className='in' type={type} name="password" />
 
                   <span className='pass' onClick={passwordVisible}>{showPassword ? <FaEyeSlash /> : <FaEye />}  </span>
-                  <ErrorMessage name="password" component="div" />
+                  <ErrorMessage name="password" component="div" style={{ color: 'red' }} />
                 </div>
                 <div className='btn'>
                   <span className="fg" onClick={handleForgot} title='click to reset your password'>Forgot password?</span>

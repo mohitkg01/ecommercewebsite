@@ -5,7 +5,7 @@
 }
 #cartItem {
     padding: 20px;
-    background-color: #f9f9f9;
+    background-color: #e1dcdc;;
     border-radius: 8px;
     max-width: 800px;
     margin: auto;
@@ -85,7 +85,7 @@ font-size: 15px;
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s ease;
-    width: auto;
+    width: 152px;
     margin-top: -8px;
     margin-left: 12px;
 }

@@ -7,3 +7,5 @@ export const removeItem="REMOVE_ITEM";
 export const clearCart="CLEAR_ITEM";
 export const SiderBarOpen="SIDE_BAR_OPEN";
 export const addressData="ADDRESS_DATA";
+export const totalAmount="TOTAL_AMOUNT";
+// export const savedAlladdress="SAVED_ADDRESS";

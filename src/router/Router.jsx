@@ -28,6 +28,7 @@ import Otppage from '../pages/login/otplogin/Otppage.jsx';
 import CartItem from '../pages/cart/CartItem.jsx';
 import Addresspage from '../pages/address/Addresspage.jsx';
 import Paymentpage from '../pages/payment/Paymentpage.jsx';
+import ViewAddress from '../pages/address/ViewAddress.jsx';
 
 const Router = () => {
   return (
@@ -63,6 +64,7 @@ const Router = () => {
             <Route path='/addproduct/:id' element={<Addproduct/>}/>
             <Route path='/cartItem' element={<CartItem/>}/>
             <Route path='/cartItem/addresspage' element={<Addresspage/>}/>
+            <Route path='/cartItem/addresspage/savedaddress' element={<ViewAddress/>}/>
             <Route path='/cartItem/addresspage/paymentpage' element={<Paymentpage/>}/>
           </Route>
         </Routes>

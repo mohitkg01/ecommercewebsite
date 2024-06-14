@@ -4,7 +4,7 @@ import '../../styles/CartItem.css'
 import { HiOutlinePlusSm, HiMinusSm } from "react-icons/hi";
 import { Card } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
-import { clearCartAction, decrease_Quantity, increase_Quantity, removeItemAction } from '../../reduxContainer/action/Action';
+import { clearCartAction, decrease_Quantity, increase_Quantity, removeItemAction, total_Amount } from '../../reduxContainer/action/Action';
 import { IoIosClose } from "react-icons/io";
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
@@ -24,13 +24,13 @@ const handleIncreaseQuantity=(itemId)=>{
     // console.log("increase");
 }
 const handleRemove = (itemId) => {
-        dispatch(removeItemAction(itemId));
+    dispatch(removeItemAction(itemId));
     toast.success('Item Removed', {
         position: "top-center"
     })
     };
  const handleClear = () => {
-        dispatch(clearCartAction());
+    dispatch(clearCartAction());
      toast.success('Cleared All Cart Item', {
          position: "top-center"
      })
@@ -39,7 +39,8 @@ const handleRemove = (itemId) => {
     const subtotal = cartItems.reduce((total, item) => total + (item.price * item.quantity), 0);
 
    const handleBuy=()=>{
-    navigate('/cartItem/addresspage')
+    navigate('/cartItem/addresspage');
+    dispatch(total_Amount(subtotal.toFixed(2)))
    }
   return (
       <div id='cartItem'>

@@ -9,7 +9,7 @@
 }
 
 .address {
-    background-color: #b1aeae;
+background-color: #c8c3c370;
         padding: 20px;
         border-radius: 8px;
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -20,17 +20,19 @@
 .address h1 {
     font-size: 24px;
     margin-bottom: 10px;
-    color: #333333;
 }
 
 .address-data {
     display: flex;
     flex-direction: column;
     gap: 8px;
+    align-items: baseline;
+    position: relative;
+    left: 38%;
 }
 
 .address-data span {
-    font-size: 16px;
-    color: #555555;
+font-size: 16px;
     line-height: 1.5;
+    font-weight: 700;
 }

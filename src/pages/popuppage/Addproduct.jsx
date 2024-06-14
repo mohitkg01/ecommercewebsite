@@ -133,22 +133,22 @@ useEffect(()=>{
                     <div className='price'>
                     <label htmlFor="price">Price</label>
                     <Field type="number" name="price" />
-                    <ErrorMessage name="price" component="div" />
+                            <ErrorMessage name="price" component="div" style={{ color: 'red' }} />
                     </div>
                     <div className='discount'>
                         <label htmlFor="">Discount Percentage</label>
                             <Field type="number" name="discount" />
-                        <ErrorMessage name="discount" component="div" />
+                            <ErrorMessage name="discount" component="div" style={{ color: 'red' }} />
                     </div>
                     <div className='stock'>
                         <label htmlFor="">Stock</label>
                             <Field type="number" name="stock" />
-                        <ErrorMessage name="stock" component="div" />
+                            <ErrorMessage name="stock" component="div" style={{ color: 'red' }} />
                     </div>
                     <div className='rating'>
                         <label htmlFor="">Rating</label>
                             <Field type="number" name="rating" />
-                        <ErrorMessage name="rating" component="div" />
+                            <ErrorMessage name="rating" component="div" style={{ color: 'red' }} />
                     </div>
                 {/*
 

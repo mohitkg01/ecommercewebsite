@@ -1,4 +1,4 @@
-import { addtocart, decreaseQuantity, increaseQuantity, loginUser, logoutUser, removeItem, clearCart, SiderBarOpen, addressData } from "./../action/ActionType"
+import { addtocart, decreaseQuantity, increaseQuantity, loginUser, logoutUser, removeItem, clearCart, SiderBarOpen, addressData, totalAmount } from "./../action/ActionType"
 
 const initialState={
     token: null,
@@ -6,13 +6,8 @@ const initialState={
     user: "",
     cartItems:[],
     isOpenSide:false,
-    address:{
-        name: '',
-        address: '',
-        city: '',
-        state: '',
-        zip: '',
-    },
+    addresses: [],
+    amount:0
 }
 const Reducer = (state = initialState, action) => {
     switch (action.type) {
@@ -39,7 +34,7 @@ const Reducer = (state = initialState, action) => {
             const itemIndex = state.cartItems.findIndex(item => item.id === action.payload.id);
             if (itemIndex >= 0) {
                 const updatedCartItems = state.cartItems.map((item, index) =>
-                    index === itemIndex ? { ...item, quantity: item.quantity + action.payload.quantity } : item
+                    index === itemIndex ? { ...item, quantity: item.quantity + 1 } : item
                 );
                 return {
                     ...state,
@@ -87,7 +82,12 @@ const Reducer = (state = initialState, action) => {
         case addressData:
             return{
                 ...state,
-                address: action.payload
+                addresses:  action.payload
+            }
+        case totalAmount:
+            return{
+                ...state,
+                amount:action.payload,
             }
         default:
             return state;

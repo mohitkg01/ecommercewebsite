@@ -1,4 +1,4 @@
-import { SiderBarOpen, addressData, decreaseQuantity } from "./ActionType";
+import { SiderBarOpen, addressData, decreaseQuantity, totalAmount } from "./ActionType";
 import { removeItem } from "./ActionType";
 import { clearCart } from "./ActionType";
 import { increaseQuantity } from "./ActionType";
@@ -59,3 +59,16 @@ export const address_Data=(data)=>{
         payload:data
     }
 }
+export const total_Amount=(amount)=>{
+    // console.log(data);
+    return{
+        type:totalAmount,
+        payload:amount,
+    }
+}
+// export const save_all_addres=(data)=>{
+//     return {
+//         type:savedAlladdress,
+//         payload:data,
+//     }
+// }

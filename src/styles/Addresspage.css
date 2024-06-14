@@ -9,15 +9,16 @@
 }
 
 #addresspage form {
-    background-color: #b9b1b1;
-        padding: 50px;
-        border-radius: 8px;
-        box-shadow: 0 2px 4px rgb(227 206 206 / 10%);
-        width: 100%;
-        max-width: 313px;
-        display: flex;
-        flex-direction: column;
-        gap: 5px;
+    background-color: #d2c6c6;
+    ;
+    padding: 14px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgb(227 206 206 / 10%);
+    width: 100%;
+    max-width: 313px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
 }
 
 #addresspage label {
@@ -29,24 +30,48 @@
 }
 
 #addresspage input[type="text"] {
-    padding: 10px;
     margin-top: 5px;
-    border: 1px solid #ccc;
+    /* border: 1px solid #ccc; */
     border-radius: 4px;
-    font-size: 14px;
-    width: 100%;
+    /* font-size: 14px; */
+    width: 70%;
+    padding: 4px;
+    margin-left: 42px;
 }
 
-/* button {
-    padding: 10px 15px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 4px;
+.savedaddress {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    background: #d2c6c6;
+    padding: 10px;
+    border-radius: 5px;
     cursor: pointer;
-    font-size: 16px;
+    text-align: justify;
+    margin-bottom: 16px;
 }
 
-button:hover {
-    background-color: #0056b3;
+.savedaddress:hover {
+    background-color: rgb(133, 214, 170);
+}
+
+.addbtn {
+    width: 150px;
+    margin: auto;
+}
+
+.pincode {
+    /* padding: 20px; */
+    position: absolute;
+    top: 10%;
+    left: 18%;
+}
+
+.pincode input {
+    border-top: thick;
+}
+
+/* .pincode  {
+    cursor: pointer;
+    color: blue;
 } */
