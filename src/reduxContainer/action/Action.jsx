@@ -1,4 +1,4 @@
-import { SiderBarOpen, addressData, decreaseQuantity, totalAmount } from "./ActionType";
+import { SiderBarOpen, addressData, cancelorderList, decreaseQuantity, deleteAddress, orderList, totalAmount, walletamount } from "./ActionType";
 import { removeItem } from "./ActionType";
 import { clearCart } from "./ActionType";
 import { increaseQuantity } from "./ActionType";
@@ -54,11 +54,16 @@ export const  sideBarOpen=(data)=>{
     }
 }
 export const address_Data=(data)=>{
-    return{
+  return{
         type:addressData,
-        payload:data
-    }
+        payload:data,
+    } 
 }
+export const delete_Address=(itemId)=>{
+    return{
+        type:deleteAddress,
+        payload:itemId,
+}}
 export const total_Amount=(amount)=>{
     // console.log(data);
     return{
@@ -66,9 +71,21 @@ export const total_Amount=(amount)=>{
         payload:amount,
     }
 }
-// export const save_all_addres=(data)=>{
-//     return {
-//         type:savedAlladdress,
-//         payload:data,
-//     }
-// }
+export const Order_List=(item)=>{
+    return{
+        type:orderList,
+        payload:item,
+    }
+}
+export const Cancel_orderList=(itemId)=>{
+    return{
+        type:cancelorderList,
+        payload:itemId
+    }
+}
+export const walletAmount=(amt)=>{
+    return{
+        type:walletamount,
+        payload:amt
+    }
+}

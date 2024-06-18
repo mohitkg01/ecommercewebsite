@@ -10,14 +10,15 @@ import { TbLocationPause } from "react-icons/tb";
 const Addresspage = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
-    const addressSaved = useSelector(state => state.addresses)
-    const [pincode,setPincode]=useState(addressSaved.postcode)
+    const addresses= useSelector(state => state.address)
+    const latestAddress = addresses.length > 0 ? addresses[addresses.length - 1] : null;
+    // console.log(addressSaved);
+    const [pincode, setPincode] = useState(latestAddress ? latestAddress.postcode : '');
     const [formData, setFormData] = useState({
-        // name: '',
-        state_district: '',
-        city: '',
-        state: '',
-        postcode: ''
+        state_district: latestAddress ? latestAddress.state_district : '',
+        city: latestAddress ? latestAddress.city : '',
+        state: latestAddress ? latestAddress.state : '',
+        postcode: latestAddress ? latestAddress.postcode : ''
     });
 
     const handleChange = (e) => {
@@ -61,22 +62,34 @@ const Addresspage = () => {
                     });
                 })
     }
-)}
+)
+}
 
     return (
         <div id='addresspage'>
             <h1>Enter Your Address</h1>
             <span><h3>Saved Address</h3></span>
-            <div className='savedaddress' onClick={() => handleSelectAddress(addressSaved)} >
-                {/* <span>Name: {addressSaved.name}</span> */}
-                <span>Street: {addressSaved.state_district}</span>
-                <span>City: {addressSaved.city}</span>
-                <span>Zip: {addressSaved.postcode}</span>
-                <span>State: {addressSaved.state}</span>
-            </div>
+           
+                {latestAddress ? (
+                  
+                    <div className='savedaddress' onClick={() => handleSelectAddress(latestAddress)}>
+                        <span>Street: {latestAddress.state_district}</span>
+                        <span>City: {latestAddress.city}</span>
+                        <span>Zip: {latestAddress.postcode}</span>
+                        <span>State: {latestAddress.state}</span>
+                    </div>
+                ) : (
+                    <div className='savedaddress' title='Enter address below'>
+                        <span>Street: NA</span>
+                        <span>City: NA</span>
+                        <span>Zip: NA</span>
+                        <span>State: NA</span>
+                    </div>
+                )}
+            
             <span className='pincode'>
                 <input type="text" placeholder='Enter your pincode' value={pincode} onChange={e=>setPincode(e.target.value)}/>
-                <TbLocationPause onClick={handlelocation} style={{cursor:'pointer'}}/></span>
+                <TbLocationPause onClick={handlelocation} style={{cursor:'pointer'}} className='lc'/></span>
             {/* {islocation ?<Loaction />:( */}
                 <form onSubmit={handleSubmit}>
                     {/* <div className='address-name'>

@@ -1,0 +1,36 @@
+/* .profile-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px;
+} */
+
+.profile {
+    display: flex;
+        flex-direction: row;
+        align-items: center;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        padding: 20px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        width: 28rem;
+        margin-left: 34rem;
+}
+
+.profile-image {
+width: 130px;
+    height: 104px;
+    border-radius: 50%;
+    margin-right: 20px;
+    background: #888a85;
+}
+
+.details {
+    display: flex;
+    flex-direction: column;
+}
+
+.detail-item {
+    margin: 5px 0;
+    font-size: 16px;
+}

@@ -1,12 +1,11 @@
 import React from 'react'
 import '../styles/Sidebar.css'
 import { AiFillProduct } from "react-icons/ai";
-import {IoPeopleSharp  } from "react-icons/io5";
 import { IoIosContacts } from "react-icons/io";
 import { BiSolidDashboard,BiSolidUser } from "react-icons/bi";
 import { GiFireShrine } from "react-icons/gi";
 import { RiWirelessChargingLine} from "react-icons/ri";
-import { MdNotificationsActive, MdTipsAndUpdates, MdCalendarViewDay, MdCategory } from "react-icons/md";
+import { MdNotificationsActive, MdCategory } from "react-icons/md";
 import { useNavigate,useMatch} from "react-router-dom";
 import { useDispatch,useSelector} from 'react-redux';
 import { logout_user, sideBarOpen } from '../reduxContainer/action/Action';
@@ -22,15 +21,12 @@ const Sidebar = () => {
 //using use match
  const product=useMatch('/product')
   const category=useMatch('/category');
-  const dash=useMatch('/dash');
-  const refree=useMatch('/refree');
-  const users=useMatch('/users');
-  const live=useMatch('/live');
+  const address=useMatch('/addresses');
+  const order=useMatch('/order');
+  const wallet = useMatch('/wallet');
+  const profile=useMatch('/profile');
   const notification=useMatch('/notification');
-  const view=useMatch('/view');
-  const team=useMatch('/team');
-  const update=useMatch('/update');
-  const player=useMatch('/player');
+  const contacts=useMatch('/contacts');
   const productDetails = useMatch('/product/productdetails/:id')
   const addProduct=useMatch('/product/addproduct')
   const categoryDetails = useMatch('/category/categorydetails/:list')
@@ -88,15 +84,12 @@ const dispatch=useDispatch();
   const menuItems = [
     { onClick: () => navigate('/product'), match: product || productDetails || addProduct, icon: <AiFillProduct/>, text: 'Products' },
     { onClick: () => navigate('/category'), match: category || categoryDetails, icon: <MdCategory/>, text: 'Category' },
-    { onClick: () => navigate('/view'), match: view, icon: <MdCalendarViewDay />, text: 'View & Export Report' },
-    { onClick: () => navigate('/dash'), match: dash, icon: <BiSolidDashboard />, text: 'Dashboard Management' },
-    { onClick: () => navigate('/refree'), match: refree, icon: <GiFireShrine />, text: 'Refree Management' },
-    { onClick: () => navigate('/users'), match: users, icon: <BiSolidUser />, text: 'User Management' },
-    { onClick: () => navigate('/live'), match: live, icon: <RiWirelessChargingLine />, text: 'Live Casting' },
+    { onClick: () => navigate('/addresses'), match: address, icon: <BiSolidDashboard />, text: 'Address' },
+    { onClick: () => navigate('/order'), match: order, icon: <GiFireShrine />, text: 'View Orders' },
+    { onClick: () => navigate('/wallet'), match: wallet, icon: <BiSolidUser />, text: 'Wallet' },
+    { onClick: () => navigate('/profile'), match: profile, icon: <RiWirelessChargingLine />, text: 'Profile' },
     { onClick: () => navigate('/notification'), match: notification, icon: <MdNotificationsActive />, text: 'Notification' },  
-    { onClick: () => navigate('/team'), match: team, icon: <IoPeopleSharp />, text: 'Teams Created by User' },
-    { onClick: () => navigate('/update'), match: update, icon: <MdTipsAndUpdates />, text: 'Games update' },
-    { onClick: () => navigate('/player'), match: player, icon: <IoIosContacts/>, text: 'Contacts' },
+    { onClick: () => navigate('/contacts'), match: contacts, icon: <IoIosContacts/>, text: 'Contacts' },
   ];
 
   return (

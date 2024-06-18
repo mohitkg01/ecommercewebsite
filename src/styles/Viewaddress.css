@@ -1,0 +1,44 @@
+.viewaddress {
+    padding: 20px;
+        margin: 20px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        background-color: #f9f9f9;
+        width: 30rem;
+        position: absolute;
+        left: 40%;
+}
+
+.viewaddress h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.add {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: #fff;
+}
+
+.add span {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 18px;
+}
+
+.add span:last-child {
+    margin-bottom: 0;
+}
+.add-btn{
+    position: relative;
+        left: 34%;
+}
+.dlt-add{
+    position: absolute;
+        right: 6%;
+    cursor: pointer;
+}
+.dlt-add:hover{
+    color: red;
+}

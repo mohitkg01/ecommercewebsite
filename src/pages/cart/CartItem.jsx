@@ -41,6 +41,7 @@ const handleRemove = (itemId) => {
    const handleBuy=()=>{
     navigate('/cartItem/addresspage');
     dispatch(total_Amount(subtotal.toFixed(2)))
+    console.log('clicked');
    }
   return (
       <div id='cartItem'>

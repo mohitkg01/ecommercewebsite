@@ -70,8 +70,9 @@
 .pincode input {
     border-top: thick;
 }
-
-/* .pincode  {
-    cursor: pointer;
-    color: blue;
-} */
+.lc{
+    font-size: 30px;
+}
+.lc:hover{
+ color: blue;
+}

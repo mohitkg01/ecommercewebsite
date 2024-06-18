@@ -1,13 +1,15 @@
-import { addtocart, decreaseQuantity, increaseQuantity, loginUser, logoutUser, removeItem, clearCart, SiderBarOpen, addressData, totalAmount } from "./../action/ActionType"
+import { addtocart, decreaseQuantity, increaseQuantity, loginUser, logoutUser, removeItem, clearCart, SiderBarOpen, addressData, totalAmount, orderList, cancelorderList, walletamount, deleteAddress } from "./../action/ActionType"
 
-const initialState={
+const initialState = {
     token: null,
     loggedIn: false,
     user: "",
-    cartItems:[],
-    isOpenSide:false,
-    addresses: [],
-    amount:0
+    cartItems: [],
+    isOpenSide: false,
+    amount: 0,
+    address: [],
+    order:[],
+    wallet:0,
 }
 const Reducer = (state = initialState, action) => {
     switch (action.type) {
@@ -18,7 +20,7 @@ const Reducer = (state = initialState, action) => {
                 loggedIn: true,
                 user: action.payload.username,
             };
-        case logoutUser: 
+        case logoutUser:
             return {
                 ...state,
                 token: null,
@@ -48,20 +50,20 @@ const Reducer = (state = initialState, action) => {
             }
         }
         case increaseQuantity:
-            return{
+            return {
                 ...state,
-                cartItems:state.cartItems.map(item=>
-                    item.id===action.payload?{...item,quantity:item.quantity+1}
-                    :item
+                cartItems: state.cartItems.map(item =>
+                    item.id === action.payload ? { ...item, quantity: item.quantity + 1 }
+                        : item
                 )
             }
         case decreaseQuantity:
             return {
                 ...state,
-                cartItems:state.cartItems.map(item=>
-                    item.id===action.payload && item.quantity>1
-                    ?{...item,quantity:item.quantity-1}
-                    :item
+                cartItems: state.cartItems.map(item =>
+                    item.id === action.payload && item.quantity > 1
+                        ? { ...item, quantity: item.quantity - 1 }
+                        : item
                 )
             }
         case removeItem:
@@ -75,20 +77,45 @@ const Reducer = (state = initialState, action) => {
                 cartItems: [],
             };
         case SiderBarOpen:
-            return{
+            return {
                 ...state,
                 isOpenSide: !state.isOpenSide,
             }
         case addressData:
+            return {
+                ...state,
+                address: [...state.address, action.payload],
+            };
+        case deleteAddress:
             return{
                 ...state,
-                addresses:  action.payload
+                address: state.address.filter((_, index) => index !== action.payload),
             }
+
         case totalAmount:
+            return {
+                ...state,
+                amount: action.payload,
+
+            }
+        case orderList:{
             return{
                 ...state,
-                amount:action.payload,
+                order:action.payload,
             }
+        }
+        case cancelorderList:{
+            return{
+               ...state,
+            order: state.order.filter(item => item.id !== action.payload),
+            }
+        }
+        case walletamount:{
+            return{
+                ...state,
+                wallet:action.payload,
+            }
+        }
         default:
             return state;
     }
