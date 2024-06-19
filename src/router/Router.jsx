@@ -23,6 +23,7 @@ import Profile from '../pages/Profile/Profile.jsx';
 import Orderspage from '../pages/Orders/Orderspage.jsx';
 import Contacts from '../pages/Contacts/Contacts.jsx';
 import Walletpage from '../pages/wallet/Walletpage.jsx';
+import Chatbot from '../pages/Contacts/Chatbot.jsx';
 
 const Router = () => {
   return (
@@ -56,6 +57,7 @@ const Router = () => {
             <Route path='/cartItem/addresspage' element={<Addresspage />} />
             {/* <Route path='/cartItem/addresspage' element={<Addresspage/>}/> */}
             <Route path='/cartItem/addresspage/paymentpage' element={<Paymentpage />} />
+            <Route path='/contacts/chatbot' element={<Chatbot/>} />
           </Route>
         </Routes>
       </BrowserRouter>
