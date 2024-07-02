@@ -89,9 +89,3 @@
 .chat-option:hover {
     background-color: #e1f5fe;
 }
-
-@media (max-width: 768px) {
-    .support-container {
-        width: 90%;
-    }
-}
